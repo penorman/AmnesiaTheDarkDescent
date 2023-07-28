@@ -17,6 +17,10 @@
  * along with Amnesia: The Dark Descent.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#ifndef WINDOWS_IGNORE_PACKING_MISMATCH
+#define WINDOWS_IGNORE_PACKING_MISMATCH
+#endif
+
 #ifndef HPL_LOWLEVELINPUT_H
 #define HPL_LOWLEVELINPUT_H
 

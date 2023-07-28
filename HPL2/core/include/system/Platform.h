@@ -23,6 +23,7 @@
 #include "system/SystemTypes.h"
 
 #include <cstdarg>
+#include <functional>
 
 namespace hpl {
 
@@ -33,7 +34,7 @@ namespace hpl {
 
 	//-----------------------------------------
 
-    struct VideoComp : public std::binary_function<cVideoMode, cVideoMode, bool> {
+    struct VideoComp {
         bool operator() (const cVideoMode& aVM1, const cVideoMode& aVM2) const;
     };
 
