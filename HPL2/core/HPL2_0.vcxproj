@@ -58,7 +58,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)..\dependencies\include;$(ProjectDir)..\dependencies\include\AL;$(ProjectDir)..\dependencies\include\HaptX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)..\dependencies\include;$(ProjectDir)..\dependencies\include\fbxsdk;$(ProjectDir)..\dependencies\include\AL;$(ProjectDir)..\dependencies\include\HaptX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;HPL_EXPORTS;MEMORY_MANAGER_ACTIVE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -578,6 +578,7 @@
     <ClCompile Include="sources\impl\MeshLoaderCollada.cpp" />
     <ClCompile Include="sources\impl\MeshLoaderColladaHelpers.cpp" />
     <ClCompile Include="sources\impl\MeshLoaderColladaLoader.cpp" />
+    <ClCompile Include="sources\impl\MeshLoaderFBX.cpp" />
     <ClCompile Include="sources\impl\MeshLoaderMSH.cpp" />
     <ClCompile Include="sources\impl\MouseSDL.cpp" />
     <ClCompile Include="sources\impl\MutexWin32.cpp" />

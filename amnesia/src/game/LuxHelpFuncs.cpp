@@ -332,7 +332,7 @@ tWString cLuxHelpFuncs::ParseStringCommand(const tWString& asCommand)
 		}
 
 		///////////////////////////
-		// Create string from action
+		// Create std::string from action
 		tWString sOutput = _W("");
 		for(size_t i=0; i<pAction->GetSubActionNum(); ++i)
 		{

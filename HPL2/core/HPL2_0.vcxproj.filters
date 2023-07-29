@@ -1890,6 +1890,9 @@
     <ClCompile Include="sources\generate\VoxelMap.cpp">
       <Filter>Generate</Filter>
     </ClCompile>
+    <ClCompile Include="sources\impl\MeshLoaderFBX.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="buildcounterinput.txt" />

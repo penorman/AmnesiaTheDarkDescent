@@ -2614,7 +2614,7 @@ tWString cLuxInventory::AddGamepadTextAtPosition(const tWString& asCommand, int 
 	std::copy(asCommand.begin(), asCommand.end(), sCommand.begin());
 
 	////////////////
-	// Get icon from command string
+	// Get icon from command std::string
 	tString sSep = ".";
 	tStringVec vInputParts;
 	cString::GetStringVec(sCommand, vInputParts, &sSep);

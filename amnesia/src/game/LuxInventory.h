@@ -235,7 +235,7 @@ public:
 
 	void SetDescText(const tWString &asHeader, const tWString &asNormal);
 	/**
-	 * if life time is <=0 then the life time is calculated based on string length.
+	 * if life time is <=0 then the life time is calculated based on std::string length.
 	 */
 	void SetMessageText(const tWString &asText, float afLifeTime);
 	bool GetMessageActive(){ return mbMessageActive;}

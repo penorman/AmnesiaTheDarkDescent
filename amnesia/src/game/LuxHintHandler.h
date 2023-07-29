@@ -63,7 +63,7 @@ public:
 	bool IsActive() { return mbActive; }
 
 	/**
-	* if time shown is <=0 then the life time is calculated based on string length.
+	* if time shown is <=0 then the life time is calculated based on std::string length.
 	*/
 	bool Add(const tString &asName, const tWString &asMessage, float afTimeShown);
 	bool Remove(const tString &asName);

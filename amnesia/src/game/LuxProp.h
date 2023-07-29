@@ -264,7 +264,7 @@ public:
 	void ResetProperties();
 
 	/**
-	 * asCallback only used if loop is false! Callback syntax: MyFunc(string asProp)
+	 * asCallback only used if loop is false! Callback syntax: MyFunc(std::string asProp)
 	 */
 	void PlayAnimation(const tString& asName, float afFadeTime, bool abLoop, const tString& asCallback);
 

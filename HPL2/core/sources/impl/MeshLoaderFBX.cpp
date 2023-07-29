@@ -50,29 +50,27 @@
 
 namespace hpl {
 
-	static KFbxXMatrix GetGeometry(KFbxNode* pNode) {
-		KFbxVector4 lT, lR, lS;
-		KFbxXMatrix lGeometry;
+	static FbxMatrix GetGeometry(FbxNode* pNode) {
+		FbxVector4 lT, lR, lS;
+		FbxMatrix lGeometry;
 
-		lT = pNode->GetGeometricTranslation(KFbxNode::eSOURCE_SET);
-		lR = pNode->GetGeometricRotation(KFbxNode::eSOURCE_SET);
-		lS = pNode->GetGeometricScaling(KFbxNode::eSOURCE_SET);
+		lT = pNode->GetGeometricTranslation(FbxNode::EPivotSet::eSourcePivot);
+		lR = pNode->GetGeometricRotation(FbxNode::EPivotSet::eSourcePivot);
+		lS = pNode->GetGeometricScaling(FbxNode::EPivotSet::eSourcePivot);
 
-	    lGeometry.SetT(lT);
-	    lGeometry.SetR(lR);
-	    lGeometry.SetS(lS);
+		lGeometry.SetTRS(lT, lR, lS);
 
 	    return lGeometry;
 	}
 
-	static KFbxMatrix GetGeometryTwo(KFbxNode* pNode) {
-		KFbxVector4 lT, lR, lS;
+	static FbxMatrix GetGeometryTwo(FbxNode* pNode) {
+		FbxVector4 lT, lR, lS;
 
-		lT = pNode->GetGeometricTranslation(KFbxNode::eSOURCE_SET);
-		lR = pNode->GetGeometricRotation(KFbxNode::eSOURCE_SET);
-		lS = pNode->GetGeometricScaling(KFbxNode::eSOURCE_SET);
+		lT = pNode->GetGeometricTranslation(FbxNode::EPivotSet::eSourcePivot);
+		lR = pNode->GetGeometricRotation(FbxNode::EPivotSet::eSourcePivot);
+		lS = pNode->GetGeometricScaling(FbxNode::EPivotSet::eSourcePivot);
 
-	    return KFbxMatrix( lT, lR, lS );
+	    return FbxMatrix( lT, lR, lS );
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -86,11 +84,11 @@ namespace hpl {
 		mpMeshLoaderMSH = apMeshLoaderMSH;
 		mbLoadAndSaveMSHFormat = abLoadAndSaveMSHFormat;
 
-		mpSdkManager = KFbxSdkManager::Create();
+		mpSdkManager = fbxsdk::FbxManager::Create();
 
 		AddSupportedExtension("fbx");
 
-		KFbxIOSettings * ios = KFbxIOSettings::Create(mpSdkManager, IOSROOT );
+		FbxIOSettings * ios = FbxIOSettings::Create(mpSdkManager, IOSROOT );
 		mpSdkManager->SetIOSettings(ios);
 
 		mbLog = true;
@@ -132,8 +130,8 @@ namespace hpl {
 			}
 		}
 
-		KFbxScene * pScene = KFbxScene::Create(mpSdkManager,"");
-		KFbxImporter* pImporter = KFbxImporter::Create(mpSdkManager,"");
+		FbxScene * pScene = FbxScene::Create(mpSdkManager,"");
+		FbxImporter* pImporter = FbxImporter::Create(mpSdkManager,"");
 
 		LoadScene(mpSdkManager, pScene, cString::To8Char(asFile).c_str());
 
@@ -171,8 +169,8 @@ namespace hpl {
 		cAnimation *pAnimation = NULL;//LoadAnimations(pScene, pImporter, asFile,pSkeleton);
 
 		//Clean up
-		pScene->Destroy(true,true);
-		pImporter->Destroy(true,true);
+		pScene->Destroy(true);
+		pImporter->Destroy(true);
 		
 		//Create the mesh
 		cMesh *pMesh = hplNew( cMesh, (cString::To8Char(asFile), asFile, mpMaterialManager,mpAnimationManager) );
@@ -258,8 +256,8 @@ namespace hpl {
 			}
 		}
 
-		KFbxScene * pScene = KFbxScene::Create(mpSdkManager,"");
-		KFbxImporter* pImporter = KFbxImporter::Create(mpSdkManager,"");
+		FbxScene * pScene = FbxScene::Create(mpSdkManager,"");
+		FbxImporter* pImporter = FbxImporter::Create(mpSdkManager,"");
 
 		LoadScene(mpSdkManager, pScene, cString::To8Char(asFile).c_str());
 
@@ -295,8 +293,8 @@ namespace hpl {
 		cAnimation *pAnimation = LoadAnimations(pScene, pImporter, asFile,pSkeleton);
 
 		//Clean up
-		pScene->Destroy(true,true);
-		pImporter->Destroy(true,true);
+		pScene->Destroy(true);
+		pImporter->Destroy(true);
 		
 		if(pSkeleton) hplDelete(pSkeleton);
 
@@ -319,11 +317,11 @@ namespace hpl {
 
 	//-----------------------------------------------------------------------
 
-	cAnimation*  cMeshLoaderFBX::LoadAnimations(KFbxScene *apScene, KFbxImporter* apImporter, const tWString& asFile, cSkeleton * apSkeleton)
+	cAnimation*  cMeshLoaderFBX::LoadAnimations(FbxScene *apScene, FbxImporter* apImporter, const tWString& asFile, cSkeleton * apSkeleton)
 	{
 		int lTake = -1;
 
-		KArrayTemplate<KString*> vStrings;
+		FbxArray<FbxString*> vStrings;
 		apScene->FillAnimStackNameArray(vStrings);
 
 		Log("Animations: ");
@@ -338,7 +336,7 @@ namespace hpl {
 		
         for(int i=0;i<vStrings.GetCount();i++)
 		{
-			KFbxTakeInfo* pTakeInfo = apScene->GetTakeInfo(*vStrings[i]);
+			FbxTakeInfo* pTakeInfo = apScene->GetTakeInfo(*vStrings[i]);
 			if(pTakeInfo==NULL)continue;
 
 			Log("Info for '%s'\n",vStrings[i]->Buffer());
@@ -373,26 +371,28 @@ namespace hpl {
 	}
 
 	//-----------------------------------------------------------------------
+	// TODO: - Change this implementation FROM KfCurve TO FbxAnimCurve syntax.
+	//		 - Figure out the layout of the data structure.
 	
-	static KFCurve *GetCurve(KFbxNode *apNode, KFbxAnimLayer * apAnimLayer, tAnimTransformFlag aType, int alAxis)
+	static fbxsdk::FbxAnimCurve *GetCurve(FbxNode *apNode, FbxAnimLayer * apAnimLayer, tAnimTransformFlag aType, int alAxis)
 	{
-		KFCurve *pCurve=NULL;
+		fbxsdk::FbxAnimCurve *pCurve=NULL;
 		switch(aType)
 		{
 		case eAnimTransformFlag_Translate:
-			if(alAxis==0) pCurve = apNode->LclTranslation.GetCurve<KFbxAnimCurve>(apAnimLayer, KFCURVENODE_T_X, true)->GetKFCurve();
-			if(alAxis==1) pCurve = apNode->LclTranslation.GetCurve<KFbxAnimCurve>(apAnimLayer, KFCURVENODE_T_Y, true)->GetKFCurve();
-			if(alAxis==2) pCurve = apNode->LclTranslation.GetCurve<KFbxAnimCurve>(apAnimLayer, KFCURVENODE_T_Z, true)->GetKFCurve();
+			if(alAxis==0) pCurve = apNode->LclTranslation.GetCurve(apAnimLayer, FBXSDK_CURVENODE_COMPONENT_X, true)->GetValue();
+			if(alAxis==1) pCurve = apNode->LclTranslation.GetCurve(apAnimLayer, FBXSDK_CURVENODE_COMPONENT_Y, true)->GetKFCurve();
+			if(alAxis==2) pCurve = apNode->LclTranslation.GetCurve(apAnimLayer, FBXSDK_CURVENODE_COMPONENT_Z, true)->GetKFCurve();
 			break;
 		case eAnimTransformFlag_Scale:
-			if(alAxis==0) pCurve = apNode->LclScaling.GetCurve<KFbxAnimCurve>(apAnimLayer, KFCURVENODE_S_X, true)->GetKFCurve();
-			if(alAxis==1) pCurve = apNode->LclScaling.GetCurve<KFbxAnimCurve>(apAnimLayer, KFCURVENODE_S_Y, true)->GetKFCurve();
-			if(alAxis==2) pCurve = apNode->LclScaling.GetCurve<KFbxAnimCurve>(apAnimLayer, KFCURVENODE_S_Z, true)->GetKFCurve();
+			if(alAxis==0) pCurve = apNode->LclScaling.GetCurve(apAnimLayer, FBXSDK_CURVENODE_COMPONENT_X, true)->GetKFCurve();
+			if(alAxis==1) pCurve = apNode->LclScaling.GetCurve(apAnimLayer, FBXSDK_CURVENODE_COMPONENT_Y, true)->GetKFCurve();
+			if(alAxis==2) pCurve = apNode->LclScaling.GetCurve(apAnimLayer, FBXSDK_CURVENODE_COMPONENT_Z, true)->GetKFCurve();
 			break;
 		case eAnimTransformFlag_Rotate:
-			if(alAxis==0) pCurve = apNode->LclRotation.GetCurve<KFbxAnimCurve>(apAnimLayer, KFCURVENODE_R_X, true)->GetKFCurve();
-			if(alAxis==1) pCurve = apNode->LclRotation.GetCurve<KFbxAnimCurve>(apAnimLayer, KFCURVENODE_R_Y, true)->GetKFCurve();
-			if(alAxis==2) pCurve = apNode->LclRotation.GetCurve<KFbxAnimCurve>(apAnimLayer, KFCURVENODE_R_Z, true)->GetKFCurve();
+			if(alAxis==0) pCurve = apNode->LclRotation.GetCurve(apAnimLayer, FBXSDK_CURVENODE_COMPONENT_X, true)->GetKFCurve();
+			if(alAxis==1) pCurve = apNode->LclRotation.GetCurve(apAnimLayer, FBXSDK_CURVENODE_COMPONENT_Y, true)->GetKFCurve();
+			if(alAxis==2) pCurve = apNode->LclRotation.GetCurve(apAnimLayer, FBXSDK_CURVENODE_COMPONENT_Z, true)->GetKFCurve();
 			break;
 		}
 
@@ -401,13 +401,13 @@ namespace hpl {
 
 	////////////////////////
 
-	static void GetAnimTimes(tAnimTimeSet *pTimesSet,KFbxNode * apNode, KFbxAnimLayer * apAnimLayer, tAnimTransformFlag aType, int alAxis)
+	static void GetAnimTimes(tAnimTimeSet *pTimesSet,FbxNode * apNode, FbxAnimLayer * apAnimLayer, tAnimTransformFlag aType, int alAxis)
 	{
-		KFCurve *pCurve = GetCurve(apNode,apAnimLayer, aType, alAxis);
+		FbxAnimCurve* pCurve = GetCurve(apNode,apAnimLayer, aType, alAxis);
 
 		for(int i=0;i<pCurve->KeyGetCount();i++)
 		{
-			KFCurveKey key = pCurve->KeyGet(i);
+			FbxAnimCurveKey key = pCurve->KeyGet(i);
 			float fTime = ((float)key.GetTime().GetMilliSeconds()) / 1000.0f;
 
 			pTimesSet->insert(fTime);
@@ -415,7 +415,7 @@ namespace hpl {
 	}
 
 	static void FillKeyVec(tTakeKeyDataVec *pVec,tAnimTimeSet *pTimesSet,
-							KFbxNode *apNode,KFbxAnimLayer * apAnimLayer, tAnimTransformFlag aType, int alAxis)
+							FbxNode *apNode,FbxAnimLayer * apAnimLayer, tAnimTransformFlag aType, int alAxis)
 	{
 		KFCurve *pCurve = GetCurve(apNode, apAnimLayer,aType, alAxis);
 		
@@ -527,14 +527,14 @@ namespace hpl {
 	
 	////////////////////////
 	
-	void cMeshLoaderFBX::LoadAnimationRec(KFbxScene *apScene,KFbxNode * apNode, cAnimation* apAnimation,const tString &asAnimStackName, 
+	void cMeshLoaderFBX::LoadAnimationRec(FbxScene *apScene,FbxNode * apNode, cAnimation* apAnimation,const tString &asAnimStackName, 
 											int alDepth, 
 											cVector3f vParentT, cVector3f vParentS, cVector3f vParentR, cSkeleton * apSkeleton)
 	{
 		const char * node_name = apNode->GetName();
 
-		KFbxAnimStack * pAnimationStack = apScene->FindMember(FBX_TYPE(KFbxAnimStack), asAnimStackName.c_str());
-		KFbxAnimLayer * pAnimLayer = pAnimationStack->GetMember(FBX_TYPE(KFbxAnimLayer), 0);
+		FbxAnimStack * pAnimationStack = apScene->FindMember(FBX_TYPE(KFbxAnimStack), asAnimStackName.c_str());
+		FbxAnimLayer * pAnimLayer = pAnimationStack->GetMember(FBX_TYPE(FbxAnimLayer), 0);
 
 		if( pAnimationStack != NULL && apNode->GetSkeleton() )
 		{
@@ -571,7 +571,7 @@ namespace hpl {
 				KTime time;
 				time.SetMilliSeconds((kLongLong)(*it * 1000));
 				
-				KFbxMatrix localTransform = apNode->EvaluateLocalTransform(time, KFbxNode::eSOURCE_SET);
+				KFbxMatrix localTransform = apNode->EvaluateLocalTransform(time, FbxNode::EPivotSet::eSourcePivot);
 				KFbxMatrix geometryMatrix = GetGeometryTwo(apNode);
 				localTransform = localTransform * geometryMatrix;
 
@@ -619,7 +619,7 @@ namespace hpl {
 	
 	//-----------------------------------------------------------------------
 
-	void cMeshLoaderFBX::LoadSkeletonRec(cBone* apBone,	KFbxNode *apNode, int alDepth)
+	void cMeshLoaderFBX::LoadSkeletonRec(cBone* apBone,	FbxNode *apNode, int alDepth)
 	{
 		if(apNode->GetSkeleton())
 		{
@@ -675,7 +675,7 @@ namespace hpl {
 	//Search the scene for geometry
 	void cMeshLoaderFBX::LoadSceneRec(tSubMeshDataList* apSubMeshList,cSkeleton *apSkeleton, 
 										cNode3D* apHplNode,
-										KFbxNode *apNode, int alDepth, bool animationOnly)
+										FbxNode *apNode, int alDepth, bool animationOnly)
 	{
 		//Load the Mesh
 		if(apNode->GetMesh())
@@ -692,7 +692,7 @@ namespace hpl {
 
 	//-----------------------------------------------------------------------
 	
-	cBone* cMeshLoaderFBX::LoadSkeletonData(cBone* apBone,KFbxNode *apNode, int alDepth)
+	cBone* cMeshLoaderFBX::LoadSkeletonData(cBone* apBone,FbxNode *apNode, int alDepth)
 	{
 		//////////////////////////////////////////////////////
 		// Get bone properties.
@@ -727,7 +727,7 @@ namespace hpl {
 
 	//-----------------------------------------------------------------------
 	
-	void cMeshLoaderFBX::LoadMeshData(tSubMeshDataList* apSubMeshList,cSkeleton* apSkeleton, cNode3D* apHplNode, KFbxNode *apNode, int alDepth, bool animationOnly)
+	void cMeshLoaderFBX::LoadMeshData(tSubMeshDataList* apSubMeshList,cSkeleton* apSkeleton, cNode3D* apHplNode, FbxNode *apNode, int alDepth, bool animationOnly)
 	{
 		//Build this list with uv, pos, normal and color.
 		tVertexVec mvVertexes;
@@ -1152,9 +1152,9 @@ namespace hpl {
 
 			//What is the difference between source and destination?
 			//Destination gives the right matrix here..hmmm...
-			KFbxMatrix GMtx = apNode->EvaluateGlobalTransform( KTIME_INFINITE, KFbxNode::eSOURCE_SET, false);
+			KFbxMatrix GMtx = apNode->EvaluateGlobalTransform( KTIME_INFINITE, FbxNode::EPivotSet::eSourcePivot, false);
 			//Something else here using rotation and scaling?
-			KFbxMatrix LMtx = apNode->EvaluateLocalTransform(KTIME_INFINITE, KFbxNode::eSOURCE_SET, false);    // again, why no local transform here? todo!
+			KFbxMatrix LMtx = apNode->EvaluateLocalTransform(KTIME_INFINITE, FbxNode::EPivotSet::eSourcePivot, false);    // again, why no local transform here? todo!
 
 			subMeshData.m_mtxGlobal = cMatrixf(&GMtx.Transpose().mData[0][0]);
 			subMeshData.m_mtxLocal = cMatrixf(&LMtx.Transpose().mData[0][0]);
@@ -1203,9 +1203,9 @@ namespace hpl {
 				{
 					KFbxLink* pLink = skin->GetCluster(j);
 
-					KFbxNode* pBoneNode = pLink->GetLink();
+					FbxNode* pBoneNode = pLink->GetLink();
 
-					KFbxNode* pAssNode = pLink->GetAssociateModel();
+					FbxNode* pAssNode = pLink->GetAssociateModel();
 					tString sAssName ="None";
 					if(pAssNode)sAssName = pAssNode->GetName();
 
@@ -1364,22 +1364,22 @@ namespace hpl {
 		return msTemp.c_str();
 	}
 
-	const char* cMeshLoaderFBX::GetAttrName(KFbxNodeAttribute::EAttributeType alNum)
+	const char* cMeshLoaderFBX::GetAttrName(FbxNodeAttribute::EAttributeType alNum)
 	{
 		switch(alNum)
 		{
-		case KFbxNodeAttribute::eUNIDENTIFIED: return "Unidentified";
-		case KFbxNodeAttribute::eNULL: return "Null";
-		case KFbxNodeAttribute::eMARKER: return "Marker";
-		case KFbxNodeAttribute::eSKELETON: return "Skeleton";
-		case KFbxNodeAttribute::eMESH: return "Mesh"; 
-		case KFbxNodeAttribute::eNURB: return "Nurb"; 
-		case KFbxNodeAttribute::ePATCH: return "Patch"; 
-		case KFbxNodeAttribute::eCAMERA: return "Camera"; 
-		case KFbxNodeAttribute::eCAMERA_SWITCHER: return "CameraSwicther";
-		case KFbxNodeAttribute::eLIGHT: return "Light";
-		case KFbxNodeAttribute::eOPTICAL_REFERENCE: return "Reference";
-		case KFbxNodeAttribute::eOPTICAL_MARKER: return "Marker";
+		case FbxNodeAttribute::eUNIDENTIFIED: return "Unidentified";
+		case FbxNodeAttribute::eNULL: return "Null";
+		case FbxNodeAttribute::eMARKER: return "Marker";
+		case FbxNodeAttribute::eSKELETON: return "Skeleton";
+		case FbxNodeAttribute::eMESH: return "Mesh"; 
+		case FbxNodeAttribute::eNURB: return "Nurb"; 
+		case FbxNodeAttribute::ePATCH: return "Patch"; 
+		case FbxNodeAttribute::eCAMERA: return "Camera"; 
+		case FbxNodeAttribute::eCAMERA_SWITCHER: return "CameraSwicther";
+		case FbxNodeAttribute::eLIGHT: return "Light";
+		case FbxNodeAttribute::eOPTICAL_REFERENCE: return "Reference";
+		case FbxNodeAttribute::eOPTICAL_MARKER: return "Marker";
 		}
 
 		return "Uknown";
@@ -1426,7 +1426,7 @@ namespace hpl {
 
 	//-----------------------------------------------------------------------
 
-	bool cMeshLoaderFBX::LoadScene(KFbxSdkManager* pSdkManager, KFbxDocument* pScene, const char* pFilename)
+	bool cMeshLoaderFBX::LoadScene(FbxManager* pSdkManager, KFbxDocument* pScene, const char* pFilename)
 	{
 		int lFileMajor, lFileMinor, lFileRevision;
 		int lSDKMajor,  lSDKMinor,  lSDKRevision;
@@ -1436,10 +1436,10 @@ namespace hpl {
 		char lPassword[1024];
 
 		// Get the file version number generate by the FBX SDK.
-		KFbxSdkManager::GetFileFormatVersion(lSDKMajor, lSDKMinor, lSDKRevision);
+		FbxManager::GetFileFormatVersion(lSDKMajor, lSDKMinor, lSDKRevision);
 
 		// Create an importer.
-		KFbxImporter* lImporter = KFbxImporter::Create(pSdkManager,"");
+		FbxImporter* lImporter = FbxImporter::Create(pSdkManager,"");
 
 		// Initialize the importer by providing a filename.
 		const bool lImportStatus = lImporter->Initialize(pFilename, -1, pSdkManager->GetIOSettings());
@@ -1447,7 +1447,7 @@ namespace hpl {
 
 		if( !lImportStatus )
 		{
-			printf("Call to KFbxImporter::Initialize() failed.\n");
+			printf("Call to FbxImporter::Initialize() failed.\n");
 			printf("Error returned: %s\n\n", lImporter->GetLastErrorString());
 
 			if (lImporter->GetLastErrorID() == KFbxIO::eFILE_VERSION_NOT_SUPPORTED_YET ||
@@ -1479,7 +1479,7 @@ namespace hpl {
 
 			for(i = 0; i < lAnimStackCount; i++)
 			{
-				KFbxTakeInfo* lTakeInfo = lImporter->GetTakeInfo(i);
+				FbxTakeInfo* lTakeInfo = lImporter->GetTakeInfo(i);
 
 				printf("    Animation Stack %d\n", i);
 				printf("         Name: \"%s\"\n", lTakeInfo->mName.Buffer());
