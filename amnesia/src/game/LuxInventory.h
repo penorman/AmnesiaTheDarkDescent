@@ -261,10 +261,10 @@ public:
 	bool GetPickedItemMoved() { return mbPickedObjectMoved; }
 	double GetItemPickedAt() { return mfPickedUpAt; }
 
-#ifdef USE_GAMEPAD
-	void AppDeviceWasPlugged();
-	void AppDeviceWasRemoved();
-#endif
+//#ifdef USE_GAMEPAD
+//	void AppDeviceWasPlugged();
+//	void AppDeviceWasRemoved();
+//#endif
 
 private:
 	///////////////////////

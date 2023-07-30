@@ -1231,7 +1231,7 @@ namespace hpl {
 					pLink->GetTransformLinkMatrix( transformLinkMatrix );
 
 					// Multiply transformLinkMatrix by Geometric Transformation
-					lClusterGeometry = GetGeometry(pLink->GetLink());
+					pLink->GetTransformParentMatrix(lClusterGeometry);
 					transformLinkMatrix *= lClusterGeometry;
 
 					vTrans = transformLinkMatrix.GetT();
@@ -1371,31 +1371,31 @@ namespace hpl {
 	{
 		switch(alNum)
 		{
-		case FbxNodeAttribute::eUNIDENTIFIED: return "Unidentified";
-		case FbxNodeAttribute::eNULL: return "Null";
-		case FbxNodeAttribute::eMARKER: return "Marker";
-		case FbxNodeAttribute::eSKELETON: return "Skeleton";
-		case FbxNodeAttribute::eMESH: return "Mesh"; 
-		case FbxNodeAttribute::eNURB: return "Nurb"; 
-		case FbxNodeAttribute::ePATCH: return "Patch"; 
-		case FbxNodeAttribute::eCAMERA: return "Camera"; 
-		case FbxNodeAttribute::eCAMERA_SWITCHER: return "CameraSwicther";
-		case FbxNodeAttribute::eLIGHT: return "Light";
-		case FbxNodeAttribute::eOPTICAL_REFERENCE: return "Reference";
-		case FbxNodeAttribute::eOPTICAL_MARKER: return "Marker";
+			case FbxNodeAttribute::EType::eUnknown : return "Unidentified";
+			case FbxNodeAttribute::EType::eNull :return "Null";
+			case FbxNodeAttribute::EType::eMarker: return "Marker";
+			case FbxNodeAttribute::EType::eSkeleton: return "Skeleton";
+			case FbxNodeAttribute::EType::eMesh: return "Mesh";
+			case FbxNodeAttribute::EType::eNurbs: return "Nurb";
+			case FbxNodeAttribute::EType::ePatch: return "Patch";
+			case FbxNodeAttribute::EType::eCamera: return "Camera";
+			case FbxNodeAttribute::EType::eCameraSwitcher: return "CameraSwicther";
+			case FbxNodeAttribute::EType::eLight: return "Light";
+			case FbxNodeAttribute::EType::eOpticalReference: return "Reference";
+			case FbxNodeAttribute::EType::eOpticalMarker: return "Marker";
 		}
 
 		return "Uknown";
 	}
 
-	const char*  cMeshLoaderFBX::GetSkelTypeName(FbxSkeleton::EType alNum)
+	const char* cMeshLoaderFBX::GetSkelTypeName(FbxSkeleton::EType alNum)
 	{
 		switch(alNum)
 		{
-		case fbxsdk::FbxSkeleton::eROOT: return "Root";
-		case KFbxSkeleton::eLIMB: return "Limb";
-		case KFbxSkeleton::eLIMB_NODE:  return "Limb Node";
-		case KFbxSkeleton::eEFFECTOR:  return "Effector (root)";
+			case FbxSkeleton::EType::eRoot: return "Root";
+			case FbxSkeleton::EType::eLimb: return "Limb";
+			case FbxSkeleton::EType::eLimbNode:  return "Limb Node";
+			case FbxSkeleton::EType::eEffector:  return "Effector (root)";
 		}
 
 		return "Unknown";
@@ -1451,10 +1451,9 @@ namespace hpl {
 		if( !lImportStatus )
 		{
 			printf("Call to FbxImporter::Initialize() failed.\n");
-			printf("Error returned: %s\n\n", lImporter->GetLastErrorString());
+			printf("Error returned: %s\n\n", lImporter->GetStatus().GetErrorString());
 
-			if (lImporter->Get == KFbxIO::eFILE_VERSION_NOT_SUPPORTED_YET ||
-				lImporter->GetLastErrorID() == KFbxIO::eFILE_VERSION_NOT_SUPPORTED_ANYMORE)
+			if (lImporter->GetStatus().GetCode() == FbxStatus::eInvalidFileVersion)
 			{
 				printf("FBX version number for this FBX SDK is %d.%d.%d\n", lSDKMajor, lSDKMinor, lSDKRevision);
 				printf("FBX version number for file %s is %d.%d.%d\n\n", pFilename, lFileMajor, lFileMinor, lFileRevision);
@@ -1512,21 +1511,21 @@ namespace hpl {
 		// Import the scene.
 		lStatus = lImporter->Import(pScene);
 
-		if(lStatus == false && lImporter->GetLastErrorID() == KFbxIO::ePASSWORD_ERROR)
+		if(lStatus == false && lImporter->GetStatus().GetCode() == FbxStatus::ePasswordError)
 		{
 			printf("Please enter password: ");
 
 			lPassword[0] = '\0';
 
 			scanf("%s", lPassword);
-			KString lString(lPassword);
+			FbxString lString(lPassword);
 
 			IOS_REF.SetStringProp(IMP_FBX_PASSWORD,      lString);
 			IOS_REF.SetBoolProp(IMP_FBX_PASSWORD_ENABLE, true);
 
 			lStatus = lImporter->Import(pScene);
 
-			if(lStatus == false && lImporter->GetLastErrorID() == KFbxIO::ePASSWORD_ERROR)
+			if(lStatus == false && lImporter->GetStatus().GetCode() == FbxStatus::ePasswordError)
 			{
 				printf("\nPassword is wrong, import aborted.\n");
 			}

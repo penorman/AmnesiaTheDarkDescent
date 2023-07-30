@@ -137,49 +137,49 @@ static cLuxInput gvLuxInputs[] =
 	cLuxInput("MouseButton", eMouseButton_Button8, eLuxAction_MouseButton8Click),
 	cLuxInput("MouseButton", eMouseButton_Button9, eLuxAction_MouseButton9Click),
 
-#ifdef USE_GAMEPAD
-#if USE_SDL2
-	cLuxInput("GamepadButton", eGamepadButton_DpadUp, eLuxAction_UIArrowUp),
-	cLuxInput("GamepadButton", eGamepadButton_DpadDown, eLuxAction_UIArrowDown),
-	cLuxInput("GamepadButton", eGamepadButton_DpadLeft, eLuxAction_UIArrowLeft),
-	cLuxInput("GamepadButton", eGamepadButton_DpadRight, eLuxAction_UIArrowRight),
-
-	cLuxInput("GamepadAxis.Axis LeftY", eGamepadAxisRange_Negative, eLuxAction_UIArrowUp),
-	cLuxInput("GamepadAxis.Axis LeftX", eGamepadAxisRange_Positive, eLuxAction_UIArrowRight),
-	cLuxInput("GamepadAxis.Axis LeftY", eGamepadAxisRange_Positive, eLuxAction_UIArrowDown),
-	cLuxInput("GamepadAxis.Axis LeftX", eGamepadAxisRange_Negative, eLuxAction_UIArrowLeft),
-
-	cLuxInput("GamepadButton", eGamepadButton_A, eLuxAction_UIPrimary),
-	cLuxInput("GamepadButton", eGamepadButton_B, eLuxAction_UISecondary),
-	cLuxInput("GamepadButton", eGamepadButton_LeftShoulder, eLuxAction_UIPrevPage),
-	cLuxInput("GamepadButton", eGamepadButton_RightShoulder, eLuxAction_UINextPage),
-	cLuxInput("GamepadAxis.Axis LeftTrigger", eGamepadAxisRange_Positive, eLuxAction_UIPrevPage),
-	cLuxInput("GamepadAxis.Axis RightTrigger", eGamepadAxisRange_Positive, eLuxAction_UINextPage),
-
-	cLuxInput("GamepadButton", eGamepadButton_X, eLuxAction_UIDelete),
-	cLuxInput("GamepadButton", eGamepadButton_Y, eLuxAction_UIClear),
-#else
-	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Up, eLuxAction_UIArrowUp),
-	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Down, eLuxAction_UIArrowDown),
-	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Left, eLuxAction_UIArrowLeft),
-	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Right, eLuxAction_UIArrowRight),
-
-	cLuxInput("GamepadAxis.Axis 1", eGamepadAxisRange_Negative, eLuxAction_UIArrowUp),
-	cLuxInput("GamepadAxis.Axis 0", eGamepadAxisRange_Positive, eLuxAction_UIArrowRight),
-	cLuxInput("GamepadAxis.Axis 1", eGamepadAxisRange_Positive, eLuxAction_UIArrowDown),
-	cLuxInput("GamepadAxis.Axis 0", eGamepadAxisRange_Negative, eLuxAction_UIArrowLeft),
-
-	cLuxInput("GamepadButton", eGamepadButton_0, eLuxAction_UIPrimary),
-	cLuxInput("GamepadButton", eGamepadButton_1, eLuxAction_UISecondary),
-	cLuxInput("GamepadButton", eGamepadButton_4, eLuxAction_UIPrevPage),
-	cLuxInput("GamepadButton", eGamepadButton_5, eLuxAction_UINextPage),
-	cLuxInput("GamepadAxis.Axis 2", eGamepadAxisRange_Positive, eLuxAction_UIPrevPage),
-	cLuxInput("GamepadAxis.Axis 2", eGamepadAxisRange_Negative, eLuxAction_UINextPage),
-
-	cLuxInput("GamepadButton", eGamepadButton_2, eLuxAction_UIDelete),
-	cLuxInput("GamepadButton", eGamepadButton_3, eLuxAction_UIClear),
-#endif
-#endif
+//#ifdef USE_GAMEPAD
+//#if USE_SDL2
+//	cLuxInput("GamepadButton", eGamepadButton_DpadUp, eLuxAction_UIArrowUp),
+//	cLuxInput("GamepadButton", eGamepadButton_DpadDown, eLuxAction_UIArrowDown),
+//	cLuxInput("GamepadButton", eGamepadButton_DpadLeft, eLuxAction_UIArrowLeft),
+//	cLuxInput("GamepadButton", eGamepadButton_DpadRight, eLuxAction_UIArrowRight),
+//
+//	cLuxInput("GamepadAxis.Axis LeftY", eGamepadAxisRange_Negative, eLuxAction_UIArrowUp),
+//	cLuxInput("GamepadAxis.Axis LeftX", eGamepadAxisRange_Positive, eLuxAction_UIArrowRight),
+//	cLuxInput("GamepadAxis.Axis LeftY", eGamepadAxisRange_Positive, eLuxAction_UIArrowDown),
+//	cLuxInput("GamepadAxis.Axis LeftX", eGamepadAxisRange_Negative, eLuxAction_UIArrowLeft),
+//
+//	cLuxInput("GamepadButton", eGamepadButton_A, eLuxAction_UIPrimary),
+//	cLuxInput("GamepadButton", eGamepadButton_B, eLuxAction_UISecondary),
+//	cLuxInput("GamepadButton", eGamepadButton_LeftShoulder, eLuxAction_UIPrevPage),
+//	cLuxInput("GamepadButton", eGamepadButton_RightShoulder, eLuxAction_UINextPage),
+//	cLuxInput("GamepadAxis.Axis LeftTrigger", eGamepadAxisRange_Positive, eLuxAction_UIPrevPage),
+//	cLuxInput("GamepadAxis.Axis RightTrigger", eGamepadAxisRange_Positive, eLuxAction_UINextPage),
+//
+//	cLuxInput("GamepadButton", eGamepadButton_X, eLuxAction_UIDelete),
+//	cLuxInput("GamepadButton", eGamepadButton_Y, eLuxAction_UIClear),
+//#else
+//	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Up, eLuxAction_UIArrowUp),
+//	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Down, eLuxAction_UIArrowDown),
+//	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Left, eLuxAction_UIArrowLeft),
+//	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Right, eLuxAction_UIArrowRight),
+//
+//	cLuxInput("GamepadAxis.Axis 1", eGamepadAxisRange_Negative, eLuxAction_UIArrowUp),
+//	cLuxInput("GamepadAxis.Axis 0", eGamepadAxisRange_Positive, eLuxAction_UIArrowRight),
+//	cLuxInput("GamepadAxis.Axis 1", eGamepadAxisRange_Positive, eLuxAction_UIArrowDown),
+//	cLuxInput("GamepadAxis.Axis 0", eGamepadAxisRange_Negative, eLuxAction_UIArrowLeft),
+//
+//	cLuxInput("GamepadButton", eGamepadButton_0, eLuxAction_UIPrimary),
+//	cLuxInput("GamepadButton", eGamepadButton_1, eLuxAction_UISecondary),
+//	cLuxInput("GamepadButton", eGamepadButton_4, eLuxAction_UIPrevPage),
+//	cLuxInput("GamepadButton", eGamepadButton_5, eLuxAction_UINextPage),
+//	cLuxInput("GamepadAxis.Axis 2", eGamepadAxisRange_Positive, eLuxAction_UIPrevPage),
+//	cLuxInput("GamepadAxis.Axis 2", eGamepadAxisRange_Negative, eLuxAction_UINextPage),
+//
+//	cLuxInput("GamepadButton", eGamepadButton_2, eLuxAction_UIDelete),
+//	cLuxInput("GamepadButton", eGamepadButton_3, eLuxAction_UIClear),
+//#endif
+//#endif
 	
 	cLuxInput("Keyboard", eKey_Return, eLuxAction_UIPrimary),
 
@@ -241,55 +241,55 @@ static cLuxInput gvLuxInputs[] =
 	// 3 --> (-) Look-Left, (+) Look-Right
 	// 4 --> (-) LTrigger, (+) RTrigger
 
-#ifdef USE_GAMEPAD
-#if USE_SDL2
-	cLuxInput("GamepadAxis.Axis LeftY", eGamepadAxisRange_Negative, eLuxAction_Forward),
-	cLuxInput("GamepadAxis.Axis LeftX", eGamepadAxisRange_Positive, eLuxAction_Right),
-	cLuxInput("GamepadAxis.Axis LeftY", eGamepadAxisRange_Positive, eLuxAction_Backward),
-	cLuxInput("GamepadAxis.Axis LeftX", eGamepadAxisRange_Negative, eLuxAction_Left),
-
-	cLuxInput("GamepadButton", eGamepadButton_A, eLuxAction_Jump),
-	cLuxInput("GamepadButton", eGamepadButton_B, eLuxAction_Crouch),
-	cLuxInput("GamepadButton", eGamepadButton_X, eLuxAction_Lantern),
-	cLuxInput("GamepadButton", eGamepadButton_Y, eLuxAction_Journal),
-	cLuxInput("GamepadButton", eGamepadButton_DpadRight, eLuxAction_QuestLog),
-	cLuxInput("GamepadButton", eGamepadButton_DpadLeft, eLuxAction_RecentText),
-	cLuxInput("GamepadButton", eGamepadButton_Back, eLuxAction_Inventory),
-	cLuxInput("GamepadButton", eGamepadButton_LeftShoulder, eLuxAction_Attack),
-	cLuxInput("GamepadButton", eGamepadButton_RightShoulder, eLuxAction_Interact),
-	cLuxInput("GamepadButton", eGamepadButton_Start, eLuxAction_Exit),
-	cLuxInput("GamepadButton", eGamepadButton_LeftStick, eLuxAction_CrosshairToggle),
-	cLuxInput("GamepadButton", eGamepadButton_RightStick, eLuxAction_Rotate),
-	cLuxInput("GamepadAxis.Axis LeftTrigger", eGamepadAxisRange_Positive, eLuxAction_Run),
-	cLuxInput("GamepadAxis.Axis RightTrigger", eGamepadAxisRange_Positive, eLuxAction_Lean),
-
-	cLuxInput("GamepadButton", eGamepadButton_DpadUp, eLuxAction_ZoomOut),
-	cLuxInput("GamepadButton", eGamepadButton_DpadDown, eLuxAction_ZoomIn),
-#else
-	cLuxInput("GamepadAxis.Axis 1", eGamepadAxisRange_Negative, eLuxAction_Forward),
-	cLuxInput("GamepadAxis.Axis 0", eGamepadAxisRange_Positive, eLuxAction_Right),
-	cLuxInput("GamepadAxis.Axis 1", eGamepadAxisRange_Positive, eLuxAction_Backward),
-	cLuxInput("GamepadAxis.Axis 0", eGamepadAxisRange_Negative, eLuxAction_Left),
-
-	cLuxInput("GamepadButton", eGamepadButton_0, eLuxAction_Jump),
-	cLuxInput("GamepadButton", eGamepadButton_1, eLuxAction_Crouch),
-	cLuxInput("GamepadButton", eGamepadButton_2, eLuxAction_Lantern),
-	cLuxInput("GamepadButton", eGamepadButton_3, eLuxAction_Journal),
-	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Right, eLuxAction_QuestLog),
-	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Left, eLuxAction_RecentText),
-	cLuxInput("GamepadButton", eGamepadButton_6, eLuxAction_Inventory),
-	cLuxInput("GamepadButton", eGamepadButton_4, eLuxAction_Attack),
-	cLuxInput("GamepadButton", eGamepadButton_5, eLuxAction_Interact),
-	cLuxInput("GamepadButton", eGamepadButton_7, eLuxAction_Exit),
-	cLuxInput("GamepadButton", eGamepadButton_8, eLuxAction_CrosshairToggle),
-	cLuxInput("GamepadButton", eGamepadButton_9, eLuxAction_Rotate),
-	cLuxInput("GamepadAxis.Axis 2", eGamepadAxisRange_Positive, eLuxAction_Run),
-	cLuxInput("GamepadAxis.Axis 2", eGamepadAxisRange_Negative, eLuxAction_Lean),
-	
-	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Up, eLuxAction_ZoomOut),
-	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Down, eLuxAction_ZoomIn),
-#endif
-#endif
+//#ifdef USE_GAMEPAD
+//#if USE_SDL2
+//	cLuxInput("GamepadAxis.Axis LeftY", eGamepadAxisRange_Negative, eLuxAction_Forward),
+//	cLuxInput("GamepadAxis.Axis LeftX", eGamepadAxisRange_Positive, eLuxAction_Right),
+//	cLuxInput("GamepadAxis.Axis LeftY", eGamepadAxisRange_Positive, eLuxAction_Backward),
+//	cLuxInput("GamepadAxis.Axis LeftX", eGamepadAxisRange_Negative, eLuxAction_Left),
+//
+//	cLuxInput("GamepadButton", eGamepadButton_A, eLuxAction_Jump),
+//	cLuxInput("GamepadButton", eGamepadButton_B, eLuxAction_Crouch),
+//	cLuxInput("GamepadButton", eGamepadButton_X, eLuxAction_Lantern),
+//	cLuxInput("GamepadButton", eGamepadButton_Y, eLuxAction_Journal),
+//	cLuxInput("GamepadButton", eGamepadButton_DpadRight, eLuxAction_QuestLog),
+//	cLuxInput("GamepadButton", eGamepadButton_DpadLeft, eLuxAction_RecentText),
+//	cLuxInput("GamepadButton", eGamepadButton_Back, eLuxAction_Inventory),
+//	cLuxInput("GamepadButton", eGamepadButton_LeftShoulder, eLuxAction_Attack),
+//	cLuxInput("GamepadButton", eGamepadButton_RightShoulder, eLuxAction_Interact),
+//	cLuxInput("GamepadButton", eGamepadButton_Start, eLuxAction_Exit),
+//	cLuxInput("GamepadButton", eGamepadButton_LeftStick, eLuxAction_CrosshairToggle),
+//	cLuxInput("GamepadButton", eGamepadButton_RightStick, eLuxAction_Rotate),
+//	cLuxInput("GamepadAxis.Axis LeftTrigger", eGamepadAxisRange_Positive, eLuxAction_Run),
+//	cLuxInput("GamepadAxis.Axis RightTrigger", eGamepadAxisRange_Positive, eLuxAction_Lean),
+//
+//	cLuxInput("GamepadButton", eGamepadButton_DpadUp, eLuxAction_ZoomOut),
+//	cLuxInput("GamepadButton", eGamepadButton_DpadDown, eLuxAction_ZoomIn),
+//#else
+//	cLuxInput("GamepadAxis.Axis 1", eGamepadAxisRange_Negative, eLuxAction_Forward),
+//	cLuxInput("GamepadAxis.Axis 0", eGamepadAxisRange_Positive, eLuxAction_Right),
+//	cLuxInput("GamepadAxis.Axis 1", eGamepadAxisRange_Positive, eLuxAction_Backward),
+//	cLuxInput("GamepadAxis.Axis 0", eGamepadAxisRange_Negative, eLuxAction_Left),
+//
+//	cLuxInput("GamepadButton", eGamepadButton_0, eLuxAction_Jump),
+//	cLuxInput("GamepadButton", eGamepadButton_1, eLuxAction_Crouch),
+//	cLuxInput("GamepadButton", eGamepadButton_2, eLuxAction_Lantern),
+//	cLuxInput("GamepadButton", eGamepadButton_3, eLuxAction_Journal),
+//	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Right, eLuxAction_QuestLog),
+//	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Left, eLuxAction_RecentText),
+//	cLuxInput("GamepadButton", eGamepadButton_6, eLuxAction_Inventory),
+//	cLuxInput("GamepadButton", eGamepadButton_4, eLuxAction_Attack),
+//	cLuxInput("GamepadButton", eGamepadButton_5, eLuxAction_Interact),
+//	cLuxInput("GamepadButton", eGamepadButton_7, eLuxAction_Exit),
+//	cLuxInput("GamepadButton", eGamepadButton_8, eLuxAction_CrosshairToggle),
+//	cLuxInput("GamepadButton", eGamepadButton_9, eLuxAction_Rotate),
+//	cLuxInput("GamepadAxis.Axis 2", eGamepadAxisRange_Positive, eLuxAction_Run),
+//	cLuxInput("GamepadAxis.Axis 2", eGamepadAxisRange_Negative, eLuxAction_Lean),
+//	
+//	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Up, eLuxAction_ZoomOut),
+//	cLuxInput("GamepadHat.Hat 0", eGamepadHatState_Down, eLuxAction_ZoomIn),
+//#endif
+//#endif
 
 	cLuxInput()
 };
@@ -328,11 +328,11 @@ cLuxInputHandler::cLuxInputHandler() : iLuxUpdateable("LuxInputHandler")
 	mlMaxSmoothMousePos = gpBase->mpGameCfg->GetInt("Input","MaxSmoothMousePos",0);
 	mfPrevSmoothMousePosMul = gpBase->mpGameCfg->GetFloat("Input","PrevSmoothMousePosMul",0);
 
-#ifdef USE_GAMEPAD
-	////////////////////////////////////
-	// Set up gamepad
-	SetUpGamepad();
-#endif
+//#ifdef USE_GAMEPAD
+//	////////////////////////////////////
+//	// Set up gamepad
+//	SetUpGamepad();
+//#endif
 
 	////////////////////////////////////
 	// Create the actions
@@ -366,12 +366,12 @@ void cLuxInputHandler::LoadUserConfig()
 
 	mfMouseSensitivity = gpBase->mpUserConfig->GetFloat("Input", "MouseSensitivity", 1.0f);
 
-#ifdef USE_GAMEPAD
-	mfGamepadWalkSensitivity = gpBase->mpUserConfig->GetFloat("Input", "GamepadWalkSensitivity", 1.0f);
-	mfGamepadLookSensitivity = gpBase->mpUserConfig->GetFloat("Input", "GamepadLookSensitivity", 1.5f);
-
-	mbGamepadLookInvert = gpBase->mpUserConfig->GetBool("Input", "InvertGamepadLook", false);
-#endif
+//#ifdef USE_GAMEPAD
+//	mfGamepadWalkSensitivity = gpBase->mpUserConfig->GetFloat("Input", "GamepadWalkSensitivity", 1.0f);
+//	mfGamepadLookSensitivity = gpBase->mpUserConfig->GetFloat("Input", "GamepadLookSensitivity", 1.5f);
+//
+//	mbGamepadLookInvert = gpBase->mpUserConfig->GetBool("Input", "InvertGamepadLook", false);
+//#endif
 
 
 	tString sSep = ".";
@@ -432,12 +432,12 @@ void cLuxInputHandler::SaveUserConfig()
 
 	gpBase->mpUserConfig->SetFloat("Input", "MouseSensitivity", mfMouseSensitivity);
 
-#ifdef USE_GAMEPAD
-	gpBase->mpUserConfig->SetBool("Input", "InvertGamepadLook", mbGamepadLookInvert);
-	
-	gpBase->mpUserConfig->SetFloat("Input", "GamepadWalkSensitivity", mfGamepadWalkSensitivity);
-	gpBase->mpUserConfig->SetFloat("Input", "GamepadLookSensitivity", mfGamepadLookSensitivity);
-#endif
+//#ifdef USE_GAMEPAD
+//	gpBase->mpUserConfig->SetBool("Input", "InvertGamepadLook", mbGamepadLookInvert);
+//	
+//	gpBase->mpUserConfig->SetFloat("Input", "GamepadWalkSensitivity", mfGamepadWalkSensitivity);
+//	gpBase->mpUserConfig->SetFloat("Input", "GamepadLookSensitivity", mfGamepadLookSensitivity);
+//#endif
 
 	//////////////////////////////////////////////////
 	// Save key config
@@ -567,15 +567,15 @@ void cLuxInputHandler::SetMouseSensitivity(float afX)
 
 //-----------------------------------------------------------------------
 
-#ifdef USE_GAMEPAD
-void cLuxInputHandler::SetGamepadLookSensitivity(float afX)
-{
-	if(mfGamepadLookSensitivity==afX)
-		return;
-
-	mfGamepadLookSensitivity = afX;
-}
-#endif
+//#ifdef USE_GAMEPAD
+//void cLuxInputHandler::SetGamepadLookSensitivity(float afX)
+//{
+//	if(mfGamepadLookSensitivity==afX)
+//		return;
+//
+//	mfGamepadLookSensitivity = afX;
+//}
+//#endif
 
 //-----------------------------------------------------------------------
 
@@ -669,28 +669,28 @@ cVector2f cLuxInputHandler::GetSmoothMousePos(const cVector2f& avRelPosMouse)
 
 //-----------------------------------------------------------------------
 
-#ifdef USE_GAMEPAD
-bool cLuxInputHandler::IsGamepadPresent()
-{
-	return mpPad!=NULL;
-}
-#endif
-
-//-----------------------------------------------------------------------
-
-#ifdef USE_GAMEPAD
-void cLuxInputHandler::AppDeviceWasPlugged()
-{
-	SetUpGamepad();
-}
-#endif
-
-#ifdef USE_GAMEPAD
-void cLuxInputHandler::AppDeviceWasRemoved()
-{
-	SetUpGamepad();
-}
-#endif
+//#ifdef USE_GAMEPAD
+//bool cLuxInputHandler::IsGamepadPresent()
+//{
+//	return mpPad!=NULL;
+//}
+//#endif
+//
+////-----------------------------------------------------------------------
+//
+//#ifdef USE_GAMEPAD
+//void cLuxInputHandler::AppDeviceWasPlugged()
+//{
+//	SetUpGamepad();
+//}
+//#endif
+//
+//#ifdef USE_GAMEPAD
+//void cLuxInputHandler::AppDeviceWasRemoved()
+//{
+//	SetUpGamepad();
+//}
+//#endif
 
 //-----------------------------------------------------------------------
 
@@ -798,113 +798,113 @@ void cLuxInputHandler::UpdateGlobalInput()
 		if(mpInput->WasTriggerd(eLuxAction_MouseButton9Click))		pGui->SendMouseClickUp(eGuiMouseButton_Button9);
 		if(mpInput->DoubleTriggerd(eLuxAction_MouseButton9Click, 0.3f))	pGui->SendMouseDoubleClick(eGuiMouseButton_Button9);
 
-#ifdef USE_GAMEPAD
-		mbGamepadUIInput = false;
-		mbGamepadUIInput = UpdateGamepadUIInput();
-#endif
+//#ifdef USE_GAMEPAD
+//		mbGamepadUIInput = false;
+//		mbGamepadUIInput = UpdateGamepadUIInput();
+//#endif
 	}
 }
 
-#ifdef USE_GAMEPAD
-bool cLuxInputHandler::UpdateGamepadUIInput()
-{
-	bool bRet = false;
-	cGui* pGui = gpBase->mpEngine->GetGui();
-
-	//Key presses
-	if(IsGamepadPresent())
-	{
-		while(mpPad->HasInputUpdates())
-		{
-			pGui->SendGamepadInput(mpPad->GetInputUpdate());
-		}
-	}
-
-	int vActionIDs[] = 
-	{
-		eLuxAction_UIArrowUp,
-		eLuxAction_UIArrowRight,
-		eLuxAction_UIArrowDown,
-		eLuxAction_UIArrowLeft,
-
-		-1,
-
-		eLuxAction_UIPrimary,
-		eLuxAction_UISecondary,
-		eLuxAction_UIPrevPage,
-		eLuxAction_UINextPage,
-		eLuxAction_Interact,
-		eLuxAction_UIDelete,
-		eLuxAction_UIClear,
-
-		-1
-	};
-
-	int vInputIDs[] = 
-	{
-		eUIArrow_Up,
-		eUIArrow_Right,
-		eUIArrow_Down,
-		eUIArrow_Left,
-
-		-1,
-
-		eUIButton_Primary,
-		eUIButton_Secondary,
-		eUIButton_PrevPage,
-		eUIButton_NextPage,
-		eUIButton_Interact,
-		eUIButton_Delete,
-		eUIButton_Clear,
-
-		-1
-	};
-
-	int i=0;
-	for(; vActionIDs[i]!=-1; ++i)
-	{
-		int lAction = vActionIDs[i];
-		int lInput = vInputIDs[i];
-
-		if(mpInput->BecameTriggerd(lAction))
-		{
-			pGui->SendUIArrowPress((eUIArrow)lInput);
-			bRet = true;
-		}
-		if(mpInput->WasTriggerd(lAction))
-		{
-			pGui->SendUIArrowRelease((eUIArrow)lInput);
-			bRet = true;
-		}
-	}
-
-	++i;
-
-	for(; vActionIDs[i]!=-1; ++i)
-	{
-		int lAction = vActionIDs[i];
-		int lInput = vInputIDs[i];
-
-		if(mpInput->BecameTriggerd(lAction))
-		{
-			pGui->SendUIButtonPress((eUIButton)lInput);
-			bRet = true;
-		}
-		if(mpInput->WasTriggerd(lAction))
-		{
-			pGui->SendUIButtonRelease((eUIButton)lInput);
-			bRet = true;
-		}
-		if(mpInput->DoubleTriggerd(lAction, 0.3f))
-		{
-			pGui->SendUIButtonDoublePress((eUIButton)lInput);
-			bRet = true;
-		}
-	}
-
-	return bRet;
-}
-#endif
+//#ifdef USE_GAMEPAD
+//bool cLuxInputHandler::UpdateGamepadUIInput()
+//{
+//	bool bRet = false;
+//	cGui* pGui = gpBase->mpEngine->GetGui();
+//
+//	//Key presses
+//	if(IsGamepadPresent())
+//	{
+//		while(mpPad->HasInputUpdates())
+//		{
+//			pGui->SendGamepadInput(mpPad->GetInputUpdate());
+//		}
+//	}
+//
+//	int vActionIDs[] = 
+//	{
+//		eLuxAction_UIArrowUp,
+//		eLuxAction_UIArrowRight,
+//		eLuxAction_UIArrowDown,
+//		eLuxAction_UIArrowLeft,
+//
+//		-1,
+//
+//		eLuxAction_UIPrimary,
+//		eLuxAction_UISecondary,
+//		eLuxAction_UIPrevPage,
+//		eLuxAction_UINextPage,
+//		eLuxAction_Interact,
+//		eLuxAction_UIDelete,
+//		eLuxAction_UIClear,
+//
+//		-1
+//	};
+//
+//	int vInputIDs[] = 
+//	{
+//		eUIArrow_Up,
+//		eUIArrow_Right,
+//		eUIArrow_Down,
+//		eUIArrow_Left,
+//
+//		-1,
+//
+//		eUIButton_Primary,
+//		eUIButton_Secondary,
+//		eUIButton_PrevPage,
+//		eUIButton_NextPage,
+//		eUIButton_Interact,
+//		eUIButton_Delete,
+//		eUIButton_Clear,
+//
+//		-1
+//	};
+//
+//	int i=0;
+//	for(; vActionIDs[i]!=-1; ++i)
+//	{
+//		int lAction = vActionIDs[i];
+//		int lInput = vInputIDs[i];
+//
+//		if(mpInput->BecameTriggerd(lAction))
+//		{
+//			pGui->SendUIArrowPress((eUIArrow)lInput);
+//			bRet = true;
+//		}
+//		if(mpInput->WasTriggerd(lAction))
+//		{
+//			pGui->SendUIArrowRelease((eUIArrow)lInput);
+//			bRet = true;
+//		}
+//	}
+//
+//	++i;
+//
+//	for(; vActionIDs[i]!=-1; ++i)
+//	{
+//		int lAction = vActionIDs[i];
+//		int lInput = vInputIDs[i];
+//
+//		if(mpInput->BecameTriggerd(lAction))
+//		{
+//			pGui->SendUIButtonPress((eUIButton)lInput);
+//			bRet = true;
+//		}
+//		if(mpInput->WasTriggerd(lAction))
+//		{
+//			pGui->SendUIButtonRelease((eUIButton)lInput);
+//			bRet = true;
+//		}
+//		if(mpInput->DoubleTriggerd(lAction, 0.3f))
+//		{
+//			pGui->SendUIButtonDoublePress((eUIButton)lInput);
+//			bRet = true;
+//		}
+//	}
+//
+//	return bRet;
+//}
+//#endif
 
 //-----------------------------------------------------------------------
 
@@ -1137,83 +1137,83 @@ void cLuxInputHandler::UpdateGamePlayerInput()
 		mpPlayer->AddLean(vRelPos.x);
 	}
 
-#ifdef USE_GAMEPAD
-	//////////////////////////////////////////
-	// Gamepad movement and look
-	if(IsGamepadPresent())
-	{
-#if USE_SDL2
-		if(mpPad->ButtonIsDown(eGamepadButton_DpadUp) || mpPad->ButtonIsDown(eGamepadButton_DpadDown))
-#else
-		if(mpPad->HatIsInState(eGamepadHat_0, eGamepadHatState_Up) || mpPad->HatIsInState(eGamepadHat_0, eGamepadHatState_Down))
-#endif
-		{
-			if(mpInput->IsTriggerd(eLuxAction_ZoomOut))	mpPlayer->Scroll( gpBase->mpEngine->GetFrameTime() * 8.0f);
-			if(mpInput->IsTriggerd(eLuxAction_ZoomIn))	mpPlayer->Scroll(-gpBase->mpEngine->GetFrameTime() * 8.0f);
-		}
-
-		//////////////////////////////////////////
-		// Walk
-		//cVector2f vAnalogWalkAxis = cVector2f(mpPad->GetAxisValue(eGamepadAxis_0), mpPad->GetAxisValue(eGamepadAxis_1));
-		
-		//if(cMath::Abs(vAnalogWalkAxis.x) > 0.05f)
-		//	mpPlayer->Move(eCharDir_Right, vAnalogWalkAxis.x);
-		//if(cMath::Abs(vAnalogWalkAxis.y) > 0.05f)
-		//	mpPlayer->Move(eCharDir_Forward, -vAnalogWalkAxis.y);
-		
-
-		//////////////////////////////////////////
-		// Look / Lean
-#if USE_SDL2
-		cVector2f vAnalogLookAxis = cVector2f(mpPad->GetAxisValue(eGamepadAxis_RightX), mpPad->GetAxisValue(eGamepadAxis_RightY));
-#else
-		cVector2f vAnalogLookAxis = cVector2f(mpPad->GetAxisValue(eGamepadAxis_4), mpPad->GetAxisValue(eGamepadAxis_3));
-#endif
-
-		
-		{
-			if(mpInput->IsTriggerd(eLuxAction_Rotate))
-			{
-				mpPlayer->Scroll(-gpBase->mpEngine->GetFrameTime() * 6.0f * vAnalogLookAxis.y);
-
-#if USE_SDL2
-				vAnalogLookAxis = cVector2f(mpPad->GetAxisValue(eGamepadAxis_LeftX), mpPad->GetAxisValue(eGamepadAxis_LeftY));
-#else
-				vAnalogLookAxis = cVector2f(mpPad->GetAxisValue(eGamepadAxis_0), mpPad->GetAxisValue(eGamepadAxis_1));
-#endif
-				cVector2f vE = cMath::Vector2Abs(vAnalogLookAxis);	vE.x = sqrtf(vE.x); vE.y = sqrtf(vE.y);
-				vAnalogLookAxis = vE * vAnalogLookAxis * mfGamepadLookSensitivity / 1.25f;
-
-				if(vAnalogLookAxis.Length() > 0)
-				{
-					mpPlayer->GetCharacterBody()->StopMovement();
-				}
-			}
-
-			///////////////
-			// Make up for the dead zone
-			vAnalogLookAxis -= cVector2f(cMath::Sign(vAnalogLookAxis.x), cMath::Sign(vAnalogLookAxis.y)) * mpPad->GetAxisDeadZoneRadiusValue();
-			vAnalogLookAxis *= 1.0 / (1.0f - mpPad->GetAxisDeadZoneRadiusValue());
-
-			cVector2f vExponent = cMath::Vector2Abs(vAnalogLookAxis);	vExponent.x = sqrtf(vExponent.x); vExponent.y = sqrtf(vExponent.y);
-			cVector2f vGamepadPos = (vAnalogLookAxis * vExponent) * mfGamepadLookSensitivity*gpBase->mpEngine->GetStepSize();
-
-			//Invert the Y-axis
-			if(mbGamepadLookInvert)
-			{
-				vGamepadPos.y = -vGamepadPos.y;
-			}
-
-			vFinalPos += vGamepadPos;
-		}		
-
-		if(mpInput->IsTriggerd(eLuxAction_Lean))
-		{
-			if(cMath::Abs(vAnalogLookAxis.x) > 0.05f) mpPlayer->SetLean(vAnalogLookAxis.x);
-			else									  mpPlayer->SetLean(0);
-		}
-	}
-#endif
+//#ifdef USE_GAMEPAD
+//	//////////////////////////////////////////
+//	// Gamepad movement and look
+//	if(IsGamepadPresent())
+//	{
+//#if USE_SDL2
+//		if(mpPad->ButtonIsDown(eGamepadButton_DpadUp) || mpPad->ButtonIsDown(eGamepadButton_DpadDown))
+//#else
+//		if(mpPad->HatIsInState(eGamepadHat_0, eGamepadHatState_Up) || mpPad->HatIsInState(eGamepadHat_0, eGamepadHatState_Down))
+//#endif
+//		{
+//			if(mpInput->IsTriggerd(eLuxAction_ZoomOut))	mpPlayer->Scroll( gpBase->mpEngine->GetFrameTime() * 8.0f);
+//			if(mpInput->IsTriggerd(eLuxAction_ZoomIn))	mpPlayer->Scroll(-gpBase->mpEngine->GetFrameTime() * 8.0f);
+//		}
+//
+//		//////////////////////////////////////////
+//		// Walk
+//		//cVector2f vAnalogWalkAxis = cVector2f(mpPad->GetAxisValue(eGamepadAxis_0), mpPad->GetAxisValue(eGamepadAxis_1));
+//		
+//		//if(cMath::Abs(vAnalogWalkAxis.x) > 0.05f)
+//		//	mpPlayer->Move(eCharDir_Right, vAnalogWalkAxis.x);
+//		//if(cMath::Abs(vAnalogWalkAxis.y) > 0.05f)
+//		//	mpPlayer->Move(eCharDir_Forward, -vAnalogWalkAxis.y);
+//		
+//
+//		//////////////////////////////////////////
+//		// Look / Lean
+//#if USE_SDL2
+//		cVector2f vAnalogLookAxis = cVector2f(mpPad->GetAxisValue(eGamepadAxis_RightX), mpPad->GetAxisValue(eGamepadAxis_RightY));
+//#else
+//		cVector2f vAnalogLookAxis = cVector2f(mpPad->GetAxisValue(eGamepadAxis_4), mpPad->GetAxisValue(eGamepadAxis_3));
+//#endif
+//
+//		
+//		{
+//			if(mpInput->IsTriggerd(eLuxAction_Rotate))
+//			{
+//				mpPlayer->Scroll(-gpBase->mpEngine->GetFrameTime() * 6.0f * vAnalogLookAxis.y);
+//
+//#if USE_SDL2
+//				vAnalogLookAxis = cVector2f(mpPad->GetAxisValue(eGamepadAxis_LeftX), mpPad->GetAxisValue(eGamepadAxis_LeftY));
+//#else
+//				vAnalogLookAxis = cVector2f(mpPad->GetAxisValue(eGamepadAxis_0), mpPad->GetAxisValue(eGamepadAxis_1));
+//#endif
+//				cVector2f vE = cMath::Vector2Abs(vAnalogLookAxis);	vE.x = sqrtf(vE.x); vE.y = sqrtf(vE.y);
+//				vAnalogLookAxis = vE * vAnalogLookAxis * mfGamepadLookSensitivity / 1.25f;
+//
+//				if(vAnalogLookAxis.Length() > 0)
+//				{
+//					mpPlayer->GetCharacterBody()->StopMovement();
+//				}
+//			}
+//
+//			///////////////
+//			// Make up for the dead zone
+//			vAnalogLookAxis -= cVector2f(cMath::Sign(vAnalogLookAxis.x), cMath::Sign(vAnalogLookAxis.y)) * mpPad->GetAxisDeadZoneRadiusValue();
+//			vAnalogLookAxis *= 1.0 / (1.0f - mpPad->GetAxisDeadZoneRadiusValue());
+//
+//			cVector2f vExponent = cMath::Vector2Abs(vAnalogLookAxis);	vExponent.x = sqrtf(vExponent.x); vExponent.y = sqrtf(vExponent.y);
+//			cVector2f vGamepadPos = (vAnalogLookAxis * vExponent) * mfGamepadLookSensitivity*gpBase->mpEngine->GetStepSize();
+//
+//			//Invert the Y-axis
+//			if(mbGamepadLookInvert)
+//			{
+//				vGamepadPos.y = -vGamepadPos.y;
+//			}
+//
+//			vFinalPos += vGamepadPos;
+//		}		
+//
+//		if(mpInput->IsTriggerd(eLuxAction_Lean))
+//		{
+//			if(cMath::Abs(vAnalogLookAxis.x) > 0.05f) mpPlayer->SetLean(vAnalogLookAxis.x);
+//			else									  mpPlayer->SetLean(0);
+//		}
+//	}
+//#endif
 	if(mpInput->IsTriggerd(eLuxAction_Lean))
 	{
 		vFinalPos = 0;
@@ -1235,15 +1235,15 @@ void cLuxInputHandler::UpdateGameMessageInput()
 	if(mpInput->BecameTriggerd(eLuxAction_Interact))gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Interact ,true);
 	if(mpInput->WasTriggerd(eLuxAction_Interact))	gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Interact, false);
 
-#ifdef USE_GAMEPAD
-	////////////
-	// Use the UI input from the gamepad to do the same thing
-	if(mpInput->BecameTriggerd(eLuxAction_UIPrimary))	gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Interact, true);
-	if(mpInput->WasTriggerd(eLuxAction_UIPrimary))		gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Interact, false);
-
-	if(mpInput->BecameTriggerd(eLuxAction_UISecondary))	gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Attack, true);
-	if(mpInput->WasTriggerd(eLuxAction_UISecondary))	gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Attack, false);
-#endif
+//#ifdef USE_GAMEPAD
+//	////////////
+//	// Use the UI input from the gamepad to do the same thing
+//	if(mpInput->BecameTriggerd(eLuxAction_UIPrimary))	gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Interact, true);
+//	if(mpInput->WasTriggerd(eLuxAction_UIPrimary))		gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Interact, false);
+//
+//	if(mpInput->BecameTriggerd(eLuxAction_UISecondary))	gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Attack, true);
+//	if(mpInput->WasTriggerd(eLuxAction_UISecondary))	gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Attack, false);
+//#endif
 	
 }
 
@@ -1259,15 +1259,15 @@ void cLuxInputHandler:: UpdateGameEffectInput()
 	if(mpInput->BecameTriggerd(eLuxAction_Interact))gpBase->mpEffectHandler->DoAction(eLuxPlayerAction_Interact ,true);
 	if(mpInput->WasTriggerd(eLuxAction_Interact))	gpBase->mpEffectHandler->DoAction(eLuxPlayerAction_Interact, false);
 
-#ifdef USE_GAMEPAD
-	////////////
-	// Use the UI input from the gamepad to do the same thing
-	if(mpInput->BecameTriggerd(eLuxAction_UIPrimary))	gpBase->mpEffectHandler->DoAction(eLuxPlayerAction_Interact, true);
-	if(mpInput->WasTriggerd(eLuxAction_UIPrimary))		gpBase->mpEffectHandler->DoAction(eLuxPlayerAction_Interact, false);
-
-	if(mpInput->BecameTriggerd(eLuxAction_UISecondary))	gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Attack, true);
-	if(mpInput->WasTriggerd(eLuxAction_UISecondary))	gpBase->mpEffectHandler->DoAction(eLuxPlayerAction_Attack, false);
-#endif
+//#ifdef USE_GAMEPAD
+//	////////////
+//	// Use the UI input from the gamepad to do the same thing
+//	if(mpInput->BecameTriggerd(eLuxAction_UIPrimary))	gpBase->mpEffectHandler->DoAction(eLuxPlayerAction_Interact, true);
+//	if(mpInput->WasTriggerd(eLuxAction_UIPrimary))		gpBase->mpEffectHandler->DoAction(eLuxPlayerAction_Interact, false);
+//
+//	if(mpInput->BecameTriggerd(eLuxAction_UISecondary))	gpBase->mpMessageHandler->DoAction(eLuxPlayerAction_Attack, true);
+//	if(mpInput->WasTriggerd(eLuxAction_UISecondary))	gpBase->mpEffectHandler->DoAction(eLuxPlayerAction_Attack, false);
+//#endif
 }
 
 //-----------------------------------------------------------------------
@@ -1371,7 +1371,7 @@ void cLuxInputHandler::UpdateJournalInput()
 			mpInput->BecameTriggerd(eLuxAction_RecentText))
 	{
 #ifdef USE_GAMEPAD
-		if(mbGamepadUIInput==false) gpBase->mpJournal->ExitPressed(true);
+		//if(mbGamepadUIInput==false) gpBase->mpJournal->ExitPressed(true);
 #else
 		gpBase->mpJournal->ExitPressed(true);
 #endif
@@ -1504,30 +1504,30 @@ void cLuxInputHandler::CreateSubAction(cAction *apAction, const tStringVec& avTy
 	{
 		apAction->AddMouseButton((eMouseButton)alValue);
 	}
-#ifdef USE_GAMEPAD
-	//Gamepad
-	else if(cString::GetFirstStringPos(sType, "gamepad")==0)
-	{
-		if(avType[0]=="GamepadButton")
-			apAction->AddGamepadButton(0, (eGamepadButton)alValue);
-		else
-		{
-			eGamepadHat hat = iGamepad::StringToHat(avType[1]);
-			eGamepadAxis axis = iGamepad::StringToAxis(avType[1]);
-
-			//////////////////////////////////////////////////
-			// Gamepad elements
-			if(hat!=eGamepadHat_LastEnum)
-			{
-				apAction->AddGamepadHat(0, hat, (eGamepadHatState)alValue);
-			}
-			else if(axis!=eGamepadAxis_LastEnum)
-			{
-				apAction->AddGamepadAxis(0, axis, (eGamepadAxisRange)alValue, 0.25f);
-			}
-		}
-	}
-#endif
+//#ifdef USE_GAMEPAD
+//	//Gamepad
+//	else if(cString::GetFirstStringPos(sType, "gamepad")==0)
+//	{
+//		if(avType[0]=="GamepadButton")
+//			apAction->AddGamepadButton(0, (eGamepadButton)alValue);
+//		else
+//		{
+//			eGamepadHat hat = iGamepad::StringToHat(avType[1]);
+//			eGamepadAxis axis = iGamepad::StringToAxis(avType[1]);
+//
+//			//////////////////////////////////////////////////
+//			// Gamepad elements
+//			if(hat!=eGamepadHat_LastEnum)
+//			{
+//				apAction->AddGamepadHat(0, hat, (eGamepadHatState)alValue);
+//			}
+//			else if(axis!=eGamepadAxis_LastEnum)
+//			{
+//				apAction->AddGamepadAxis(0, axis, (eGamepadAxisRange)alValue, 0.25f);
+//			}
+//		}
+//	}
+//#endif
 }
 
 //-----------------------------------------------------------------------
@@ -1566,7 +1566,7 @@ bool cLuxInputHandler::CreateSubActionFromInputString(cAction* apAction, const t
 			if(lInputValue==eMouseButton_LastEnum) lInputValue=-1;
 		}
 #ifdef USE_GAMEPAD
-		else if(cString::GetFirstStringPos(sInputType,"gamepad")!=-1)
+		/*else if(cString::GetFirstStringPos(sInputType,"gamepad")!=-1)
 		{
 
 			if(vInputParts[0]=="GamepadButton")
@@ -1590,7 +1590,7 @@ bool cLuxInputHandler::CreateSubActionFromInputString(cAction* apAction, const t
 					if(lInputValue==eGamepadAxisRange_LastEnum) lInputValue=-1;
 				}
 			}
-		}
+		}*/
 #else
 		else
 			vInputParts.clear();
@@ -1644,46 +1644,46 @@ bool cLuxInputHandler::ShowMouseOnMouseInput()
 		}
 		mfMouseActiveAt = gpBase->mpEngine->GetGameTime();
 	}
-#ifdef USE_GAMEPAD
-	else if(IsGamepadPresent())
-	{
-		bool bDirPressed = mpInput->IsTriggerd(eLuxAction_UIArrowUp) || 
-						   mpInput->IsTriggerd(eLuxAction_UIArrowDown) ||
-						   mpInput->IsTriggerd(eLuxAction_UIArrowLeft) ||
-						   mpInput->IsTriggerd(eLuxAction_UIArrowRight);
-
-		if(bDirPressed || (mfMouseActiveAt + 5 < gpBase->mpEngine->GetGameTime() && mfMouseActiveAt > 0))
-		{
-			gpBase->mpInventory->GetSet()->SetDrawMouse(false);
-			gpBase->mpInventory->GetSet()->SetMouseMovementEnabled(false);
-			gpBase->mpInventory->GetSet()->SetDrawFocus(true);
-			gpBase->mpMainMenu->GetSet()->SetMouseMovementEnabled(false);
-			gpBase->mpMainMenu->GetSet()->SetDrawMouse(false);
-			gpBase->mpJournal->GetSet()->SetMouseMovementEnabled(false);
-			gpBase->mpJournal->GetSet()->SetDrawMouse(false);
-			gpBase->mpPreMenu->GetSet()->SetMouseMovementEnabled(false);
-			gpBase->mpPreMenu->GetSet()->SetDrawMouse(false);
-
-			mvLastAbsMousePos = mpGraphics->GetLowLevel()->GetScreenSizeInt() / 2;
-			mfMouseActiveAt = -1;
-		}
-	}
-#endif
+//#ifdef USE_GAMEPAD
+//	else if(IsGamepadPresent())
+//	{
+//		bool bDirPressed = mpInput->IsTriggerd(eLuxAction_UIArrowUp) || 
+//						   mpInput->IsTriggerd(eLuxAction_UIArrowDown) ||
+//						   mpInput->IsTriggerd(eLuxAction_UIArrowLeft) ||
+//						   mpInput->IsTriggerd(eLuxAction_UIArrowRight);
+//
+//		if(bDirPressed || (mfMouseActiveAt + 5 < gpBase->mpEngine->GetGameTime() && mfMouseActiveAt > 0))
+//		{
+//			gpBase->mpInventory->GetSet()->SetDrawMouse(false);
+//			gpBase->mpInventory->GetSet()->SetMouseMovementEnabled(false);
+//			gpBase->mpInventory->GetSet()->SetDrawFocus(true);
+//			gpBase->mpMainMenu->GetSet()->SetMouseMovementEnabled(false);
+//			gpBase->mpMainMenu->GetSet()->SetDrawMouse(false);
+//			gpBase->mpJournal->GetSet()->SetMouseMovementEnabled(false);
+//			gpBase->mpJournal->GetSet()->SetDrawMouse(false);
+//			gpBase->mpPreMenu->GetSet()->SetMouseMovementEnabled(false);
+//			gpBase->mpPreMenu->GetSet()->SetDrawMouse(false);
+//
+//			mvLastAbsMousePos = mpGraphics->GetLowLevel()->GetScreenSizeInt() / 2;
+//			mfMouseActiveAt = -1;
+//		}
+//	}
+//#endif
 
 	return bMouseActive;
 }
 
 //-----------------------------------------------------------------------
 
-#ifdef USE_GAMEPAD
-void cLuxInputHandler::SetUpGamepad()
-{
-	mpPad = mpInput->GetGamepad(0);
-	if(IsGamepadPresent())
-	{
-		mpPad->SetAxisDeadZoneRadiusValue(0.15f);
-	}
-}
-#endif
+//#ifdef USE_GAMEPAD
+//void cLuxInputHandler::SetUpGamepad()
+//{
+//	mpPad = mpInput->GetGamepad(0);
+//	if(IsGamepadPresent())
+//	{
+//		mpPad->SetAxisDeadZoneRadiusValue(0.15f);
+//	}
+//}
+//#endif
 
 //-----------------------------------------------------------------------

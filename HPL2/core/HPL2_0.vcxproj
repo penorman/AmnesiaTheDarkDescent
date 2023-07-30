@@ -61,7 +61,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)..\dependencies\include;$(ProjectDir)..\dependencies\include\fbxsdk;$(ProjectDir)..\dependencies\include\AL;$(ProjectDir)..\dependencies\include\HaptX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;HPL_EXPORTS;MEMORY_MANAGER_ACTIVE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader />
       <ObjectFileName>$(ProjectDir)_temp\$(ProjectName)\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>$(ProjectDir)..\lib\Debug\vc70.pdb</ProgramDataBaseFileName>
@@ -72,7 +72,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Lib>
-      <AdditionalDependencies>SDL.lib;DevIL.lib;glew32.lib;zlibwapi.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL.lib;DevIL.lib;glew32.lib;zlibwapi.lib;libfbxsdk-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(ProjectDir)..\lib\Debug\$(ProjectName).lib</OutputFile>
       <AdditionalLibraryDirectories>$(ProjectDir)..\dependencies\lib\win32; %(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SuppressStartupBanner>false</SuppressStartupBanner>
@@ -90,9 +90,9 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)..\dependencies\include;$(ProjectDir)..\dependencies\include\AL;$(ProjectDir)..\dependencies\include\HaptX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;HPL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;HPL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
       <ObjectFileName>$(ProjectDir)_temp\$(ProjectName)\Release\</ObjectFileName>
       <ProgramDataBaseFileName>$(ProjectDir)..\lib\Release\vc70.pdb</ProgramDataBaseFileName>
@@ -101,9 +101,10 @@
       <AdditionalOptions>/Zc:externC- /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Lib>
-      <AdditionalDependencies>SDL.lib;DevIL.lib;glew32.lib;zlibwapi.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL.lib;DevIL.lib;glew32.lib;zlibwapi.lib;libxml2-mt.lib;zlib-mt.lib;libfbxsdk-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(ProjectDir)..\lib\Release\$(ProjectName).lib</OutputFile>
       <AdditionalLibraryDirectories>$(ProjectDir)..\dependencies\lib\win32; %(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
@@ -209,6 +210,7 @@
     <ClInclude Include="include\gui\GuiPopUpColorPicker.h" />
     <ClInclude Include="include\gui\GuiPopUpFilePicker.h" />
     <ClInclude Include="include\gui\GuiPopUpMessageBox.h" />
+    <ClInclude Include="include\gui\GuiPopUpUIKeyboard.h" />
     <ClInclude Include="include\gui\GuiSet.h" />
     <ClInclude Include="include\gui\GuiSkin.h" />
     <ClInclude Include="include\gui\GuiTypes.h" />
@@ -308,6 +310,7 @@
     <ClInclude Include="include\input\ActionHaptic.h" />
     <ClInclude Include="include\input\ActionKeyboard.h" />
     <ClInclude Include="include\input\ActionMouseButton.h" />
+    <ClInclude Include="include\input\Gamepad.h" />
     <ClInclude Include="include\input\Input.h" />
     <ClInclude Include="include\input\InputDevice.h" />
     <ClInclude Include="include\input\InputTypes.h" />
@@ -520,6 +523,7 @@
     <ClCompile Include="sources\gui\GuiPopUpColorPicker.cpp" />
     <ClCompile Include="sources\gui\GuiPopUpFilePicker.cpp" />
     <ClCompile Include="sources\gui\GuiPopUpMessageBox.cpp" />
+    <ClCompile Include="sources\gui\GuiPopUpUIKeyboard.cpp" />
     <ClCompile Include="sources\gui\GuiSet.cpp" />
     <ClCompile Include="sources\gui\GuiSkin.cpp" />
     <ClCompile Include="sources\gui\Widget.cpp" />
@@ -553,6 +557,7 @@
     <ClCompile Include="sources\impl\FmodSoundChannel.cpp" />
     <ClCompile Include="sources\impl\FmodSoundData.cpp" />
     <ClCompile Include="sources\impl\FrameBufferGL.cpp" />
+    <ClCompile Include="sources\impl\GamepadSDL.cpp" />
     <ClCompile Include="sources\impl\GLSLProgram.cpp" />
     <ClCompile Include="sources\impl\GLSLShader.cpp" />
     <ClCompile Include="sources\impl\HapticForceHaptX.cpp" />
@@ -616,9 +621,13 @@
     <ClCompile Include="sources\impl\VideoStreamTheora.cpp" />
     <ClCompile Include="sources\impl\XmlDocumentTiny.cpp" />
     <ClCompile Include="sources\input\Action.cpp" />
+    <ClCompile Include="sources\input\ActionGamepadAxis.cpp" />
+    <ClCompile Include="sources\input\ActionGamepadButton.cpp" />
+    <ClCompile Include="sources\input\ActionGamepadHat.cpp" />
     <ClCompile Include="sources\input\ActionHaptic.cpp" />
     <ClCompile Include="sources\input\ActionKeyboard.cpp" />
     <ClCompile Include="sources\input\ActionMouseButton.cpp" />
+    <ClCompile Include="sources\input\Gamepad.cpp" />
     <ClCompile Include="sources\input\Input.cpp" />
     <ClCompile Include="sources\input\InputDevice.cpp" />
     <ClCompile Include="sources\input\Keyboard.cpp" />

@@ -124,10 +124,10 @@ public:
 
 	void ExitMenu(eLuxMainMenuExit aMessage);
 	tWString msLoadGameFile;
-#ifdef USE_GAMEPAD
-	void AppDeviceWasPlugged();
-	void AppDeviceWasRemoved();
-#endif
+//#ifdef USE_GAMEPAD
+//	void AppDeviceWasPlugged();
+//	void AppDeviceWasRemoved();
+//#endif
 	
 private:
 	///////////////////////

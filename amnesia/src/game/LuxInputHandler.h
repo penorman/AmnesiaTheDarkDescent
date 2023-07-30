@@ -98,15 +98,15 @@ public:
 	float GetMouseSensitivity() { return mfMouseSensitivity; }
 	void SetMouseSensitivity(float afX);
 
-#ifdef USE_GAMEPAD
-	bool GetInvertGamepadLook() { return mbGamepadLookInvert; }
-	void SetInvertGamepadLook(bool abX) { mbGamepadLookInvert = abX; }
-
-	float GetGamepadLookSensitivity() { return mfGamepadLookSensitivity; }
-	void SetGamepadLookSensitivity(float afX);
-
-	iGamepad* GetGamepad() { return mpPad; }
-#endif
+//#ifdef USE_GAMEPAD
+//	bool GetInvertGamepadLook() { return mbGamepadLookInvert; }
+//	void SetInvertGamepadLook(bool abX) { mbGamepadLookInvert = abX; }
+//
+//	float GetGamepadLookSensitivity() { return mfGamepadLookSensitivity; }
+//	void SetGamepadLookSensitivity(float afX);
+//
+//	iGamepad* GetGamepad() { return mpPad; }
+//#endif
 
 	cLuxAction*   GetActionByName(const tString& asName);
 	cLuxAction*	  GetActionById(int alId);
@@ -117,12 +117,12 @@ public:
 	void ResetSmoothMousePos();
 	cVector2f GetSmoothMousePos(const cVector2f& avRelPosMouse);
 
-#ifdef USE_GAMEPAD
-	bool IsGamepadPresent();
-
-	void AppDeviceWasPlugged();
-	void AppDeviceWasRemoved();
-#endif
+//#ifdef USE_GAMEPAD
+//	bool IsGamepadPresent();
+//
+//	void AppDeviceWasPlugged();
+//	void AppDeviceWasRemoved();
+//#endif
 
 private:
 	void UpdateGlobalInput();
@@ -178,13 +178,13 @@ private:
 
 	cVector2l mvLastAbsMousePos;
 
-#ifdef USE_GAMEPAD
-	float mfGamepadWalkSensitivity;
-	float mfGamepadLookSensitivity;
-	bool mbGamepadLookInvert;
-	iGamepad* mpPad;
-	bool mbGamepadUIInput;
-#endif
+//#ifdef USE_GAMEPAD
+//	float mfGamepadWalkSensitivity;
+//	float mfGamepadLookSensitivity;
+//	bool mbGamepadLookInvert;
+//	iGamepad* mpPad;
+//	bool mbGamepadUIInput;
+//#endif
 };
 
 //----------------------------------------------

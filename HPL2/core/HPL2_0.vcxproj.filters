@@ -1042,6 +1042,8 @@
       <Filter>Generate</Filter>
     </ClInclude>
     <ClInclude Include="include\HPL.h" />
+    <ClInclude Include="include\input\Gamepad.h" />
+    <ClInclude Include="include\gui\GuiPopUpUIKeyboard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sources\system\Container.cpp">
@@ -1893,6 +1895,12 @@
     <ClCompile Include="sources\impl\MeshLoaderFBX.cpp">
       <Filter>Impl\Resources</Filter>
     </ClCompile>
+    <ClCompile Include="sources\input\Gamepad.cpp" />
+    <ClCompile Include="sources\impl\GamepadSDL.cpp" />
+    <ClCompile Include="sources\input\ActionGamepadHat.cpp" />
+    <ClCompile Include="sources\input\ActionGamepadAxis.cpp" />
+    <ClCompile Include="sources\input\ActionGamepadButton.cpp" />
+    <ClCompile Include="sources\gui\GuiPopUpUIKeyboard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="buildcounterinput.txt" />
