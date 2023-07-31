@@ -1079,7 +1079,6 @@ namespace hpl {
 
 			if(pMaterialLayer)
 			{
-				// TODO: Read FbxLayerElementMaterial and understand consequences to its 2011 update
 				if(pMaterialLayer->GetMappingMode() != fbxsdk::FbxLayerElementMaterial::eAllSame)
 				{
 					Error("Per polygon material not supported!\n");
