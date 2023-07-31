@@ -137,7 +137,7 @@ namespace hpl {
 		HaptX::SurfaceInfo * GetDefaultSurface(){ return mpDefaultSurfaceInfo;}
 	
 	private:
-		void cLowLevelHapticHaptX::ShapeModelToHaptXData(	eHaptXShapeModelType aType,
+		void ShapeModelToHaptXData(	eHaptXShapeModelType aType,
 															const cVector3f& avSize,
 															const cMatrixf& a_mtxTransform,
 															int *apIndices,int alIndexAdd,

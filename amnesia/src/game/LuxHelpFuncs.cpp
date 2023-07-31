@@ -391,12 +391,12 @@ tWString cLuxHelpFuncs::ParseStringCommand(const tWString& asCommand)
 	{
 		tWString sOutput = _W("");
 #ifdef USE_GAMEPAD
-		sOutput += kTranslate("Hints", "Mouse");
+		/*sOutput += kTranslate("Hints", "Mouse");
 
 		if(gpBase->mpInputHandler->IsGamepadPresent())
 		{
 			sOutput += +_W(" / ")+kTranslate("Hints", "Thumbstick");
-		}
+		}*/
 #else
 		sOutput += kTranslate("Hints", "Mouse");
 #endif

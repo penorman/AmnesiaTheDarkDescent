@@ -69,7 +69,7 @@ namespace hpl {
 		else
 			asNewName = cString::SetFileExt(asName,"chps");
 		
-		pScript = static_cast<iScript*>(this->FindLoadedResource(asNewName,sPath));
+		pScript = (iScript*) this->FindLoadedResource(asNewName,sPath);
 		
 		if(pScript==NULL && sPath!=_W(""))
 		{

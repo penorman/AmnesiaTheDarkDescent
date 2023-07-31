@@ -168,7 +168,11 @@ void InstallKeyEntry::show(int argc, char*argv[]) {
 
 int Ask_Serial(std::string &serial) {
   int exitflag;
-  char *argv[1] = {"./dummyprogram"};
+  char dummy[15];
+  dummy[0] = '\0';
+  strcpy(dummy, "./dummyprogram");
+
+  char* argv[1] = { dummy };
   InstallKeyEntry *win = new InstallKeyEntry(serial,exitflag);
 
   win->show(0, argv);

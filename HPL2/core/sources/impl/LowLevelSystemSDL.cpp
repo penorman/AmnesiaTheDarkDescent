@@ -457,7 +457,7 @@ namespace hpl {
 	{
 		if(mpScriptEngine->RegisterGlobalFunction(asFuncDecl.c_str(),asFUNCTION(pFunc),asCALL_STDCALL)<0)
 		{
-			Error("Couldn't add func '%s'\n",asFuncDecl.c_str());
+			Error("Couldn't add func '%s'\n", asFuncDecl.c_str());
 			return false;
 		}
 

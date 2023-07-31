@@ -27,6 +27,8 @@
 //#include "input/InputTypes.h"
 
 #include "SDL2/SDL.h"
+#include <SDL2/SDL_gamecontroller.h>
+#include <SDL2/SDL_haptic.h>
 
 namespace hpl {
 

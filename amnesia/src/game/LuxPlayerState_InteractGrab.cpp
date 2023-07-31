@@ -475,28 +475,28 @@ bool cLuxPlayerState_InteractGrab::OnAddPitch(float afAmount)
 	cInput* pInput = gpBase->mpEngine->GetInput();
 	if(pInput->IsTriggerd(eLuxAction_Rotate) && mpGrabData->mbUseRotation)
 	{
-#ifdef USE_GAMEPAD
-		////////////////
-		// We have both gamepad and mouse connected?
-		if(gpBase->mpInputHandler->IsGamepadPresent())
-		{
-			/////////////
-			// Check which one of them was used for the input this frame
-#if USE_SDL2
-			if(cMath::Abs(gpBase->mpInputHandler->GetGamepad()->GetAxisValue(eGamepadAxis_RightY)) > 0.0f)
-#else
-			if(cMath::Abs(gpBase->mpInputHandler->GetGamepad()->GetAxisValue(eGamepadAxis_3)) > 0.0f)
-#endif
-			{
-				//Gamepad was used
-				if(gpBase->mpInputHandler->GetInvertGamepadLook()) afAmount = -afAmount;
-			}
-			else if(gpBase->mpInputHandler->GetInvertMouse()) afAmount = -afAmount;
-		}
-		else if(gpBase->mpInputHandler->GetInvertMouse()) afAmount = -afAmount;
-#else
-		if(gpBase->mpInputHandler->GetInvertMouse()) afAmount = -afAmount;
-#endif
+//#ifdef USE_GAMEPAD
+//		////////////////
+//		// We have both gamepad and mouse connected?
+//		if(gpBase->mpInputHandler->IsGamepadPresent())
+//		{
+//			/////////////
+//			// Check which one of them was used for the input this frame
+//#if USE_SDL2
+//			if(cMath::Abs(gpBase->mpInputHandler->GetGamepad()->GetAxisValue(eGamepadAxis_RightY)) > 0.0f)
+//#else
+//			if(cMath::Abs(gpBase->mpInputHandler->GetGamepad()->GetAxisValue(eGamepadAxis_3)) > 0.0f)
+//#endif
+//			{
+//				//Gamepad was used
+//				if(gpBase->mpInputHandler->GetInvertGamepadLook()) afAmount = -afAmount;
+//			}
+//			else if(gpBase->mpInputHandler->GetInvertMouse()) afAmount = -afAmount;
+//		}
+//		else if(gpBase->mpInputHandler->GetInvertMouse()) afAmount = -afAmount;
+//#else
+//		if(gpBase->mpInputHandler->GetInvertMouse()) afAmount = -afAmount;
+//#endif
 		m_mtxBodyRotation = cMath::MatrixMul(cMath::MatrixRotateX(afAmount * -3.2f),m_mtxBodyRotation);
 		return false;
 	}

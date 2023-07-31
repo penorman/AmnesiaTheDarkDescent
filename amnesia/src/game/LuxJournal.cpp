@@ -506,7 +506,7 @@ void cLuxJournal::OnEnterContainer(const tString& asOldContainer)
 	mpGuiSet->SetActive(true);
 
 #ifdef USE_GAMEPAD
-	if(gpBase->mpInputHandler->IsGamepadPresent() == false)
+	/*if(gpBase->mpInputHandler->IsGamepadPresent() == false)
 	{
 		mpGuiSet->SetDrawMouse(true);
 		mpGuiSet->SetMouseMovementEnabled(true);
@@ -515,7 +515,7 @@ void cLuxJournal::OnEnterContainer(const tString& asOldContainer)
 	{
 		mpGuiSet->SetDrawMouse(false);
 		mpGuiSet->SetMouseMovementEnabled(false);
-	}
+	}*/
 #else
 	mpGuiSet->SetDrawMouse(true);
 #endif
@@ -2232,13 +2232,13 @@ bool cLuxJournal::UIListenerArrowPress(iWidget* apWidget, const cGuiMessageData&
 		if(bRightAllowed) return NoteArrowClick(pForward, cGuiMessageData(eGuiMouseButton_Left));
 		break;
 	case eUIArrow_Down:
-#ifdef USE_GAMEPAD
-# if USE_SDL2
-		if(gpBase->mpInputHandler->GetGamepad() && gpBase->mpInputHandler->GetGamepad()->ButtonIsDown(eGamepadButton_DpadDown) == false) break;
-# else
-		if(gpBase->mpInputHandler->GetGamepad() && gpBase->mpInputHandler->GetGamepad()->HatIsInState(eGamepadHat_0, eGamepadHatState_Down) == false) break;
-# endif
-#endif
+//#ifdef USE_GAMEPAD
+//# if USE_SDL2
+//		if(gpBase->mpInputHandler->GetGamepad() && gpBase->mpInputHandler->GetGamepad()->ButtonIsDown(eGamepadButton_DpadDown) == false) break;
+//# else
+//		if(gpBase->mpInputHandler->GetGamepad() && gpBase->mpInputHandler->GetGamepad()->HatIsInState(eGamepadHat_0, eGamepadHatState_Down) == false) break;
+//# endif
+//#endif
 		if(lType == eLuxJournalState_OpenNote
 		|| lType == eLuxJournalState_OpenDiary
 		|| lType == eLuxJournalState_OpenNarratedDiary)

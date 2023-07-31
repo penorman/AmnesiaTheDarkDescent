@@ -66,7 +66,7 @@ namespace hpl {
  		 * Can be checked many times to see all updated input
 		 * \return  inputs
 		 */
-		virtual cGamepadInputData GetInputUpdate()=0;
+		//virtual cGamepadInputData GetInputUpdate()=0;
 		/**
 		 * 
 		 * \return true If ANY input is updated
@@ -82,7 +82,7 @@ namespace hpl {
 		 * Can be checked many times to see all button presses
 		 * \return key that is currently pressed. eKey_NONE is no key. 
 		 */
-		virtual cGamepadInputData GetButton()=0;
+		//virtual cGamepadInputData GetButton()=0;
 		/**
 		 *
 		 * \return If ANY button is pressed
@@ -92,7 +92,7 @@ namespace hpl {
 		 *
 		 * \return button that has been released
 		 */
-		virtual cGamepadInputData GetReleasedButton()=0;
+		//virtual cGamepadInputData GetReleasedButton()=0;
 		/**
 		 *
 		 * \return If ANY button is released
@@ -116,7 +116,7 @@ namespace hpl {
 		 * \param aHat the hat to get the state from.
 		 * \return The state of the hat.
 		 */
-		virtual cGamepadInputData GetUpdatedAxis()=0;
+		//virtual cGamepadInputData GetUpdatedAxis()=0;
 		/**
 		 * \param aHat the hat to get the state from.
 		 * \return The state of the hat.

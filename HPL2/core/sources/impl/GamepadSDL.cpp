@@ -199,13 +199,14 @@ namespace hpl {
 	}
 
 	//-----------------------------------------------------------------------
-
+	
 	bool cGamepadSDL::HasInputUpdates()
 	{
 		return mlstInputUpdates.empty()==false;
 	}
 
-	cGamepadInputData cGamepadSDL::GetInputUpdate()
+	// bad 
+	/*cGamepadInputData cGamepadSDL::GetInputUpdate()
 	{
 		cGamepadInputData input = mlstInputUpdates.front();
 		mlstInputUpdates.pop_front();
@@ -229,10 +230,10 @@ namespace hpl {
 		}
 
 		return input;
-	}
+	}*/
 
 	//-----------------------------------------------------------------------
-
+	
     bool cGamepadSDL::ButtonIsDown(eGamepadButton aButton)
 	{
 		if(aButton >= 0 && aButton < GetNumButtons())
@@ -242,36 +243,36 @@ namespace hpl {
 
 		return false;
 	}
-
+	
 	//-----------------------------------------------------------------------
 
+	// bad
+	//cGamepadInputData cGamepadSDL::GetButton()
+	//{
+	//	cGamepadInputData button = mlstButtonsPressed.front();
+	//	mlstButtonsPressed.pop_front();
+	//	mlstInputUpdates.remove(button);
 
-	cGamepadInputData cGamepadSDL::GetButton()
-	{
-		cGamepadInputData button = mlstButtonsPressed.front();
-		mlstButtonsPressed.pop_front();
-		mlstInputUpdates.remove(button);
-
-		return button;
-	}
-
+	//	return button;
+	//}
+	
 	//-----------------------------------------------------------------------
 
 	bool cGamepadSDL::ButtonIsPressed()
 	{
 		return mlstButtonsPressed.empty()==false;
 	}
-
+	
 	//-----------------------------------------------------------------------
-
-	cGamepadInputData cGamepadSDL::GetReleasedButton()
+	// bad
+	/*cGamepadInputData cGamepadSDL::GetReleasedButton()
 	{
 		cGamepadInputData button = mlstButtonsReleased.front();
 		mlstButtonsReleased.pop_front();
 		mlstInputUpdates.remove(button);
 
 		return button;
-	}
+	}*/
 
 	//-----------------------------------------------------------------------
 
@@ -281,7 +282,7 @@ namespace hpl {
 	}
 
 	//-----------------------------------------------------------------------
-
+	
 	float cGamepadSDL::GetAxisValue(eGamepadAxis aAxis)
 	{
 		if(aAxis >= 0 && aAxis < GetNumAxes())
@@ -302,14 +303,15 @@ namespace hpl {
 		mfDeadZoneRadius = afValue;
 	}
 
-	cGamepadInputData cGamepadSDL::GetUpdatedAxis()
+	// bad
+	/*cGamepadInputData cGamepadSDL::GetUpdatedAxis()
 	{
 		cGamepadInputData axis = mlstAxisChanges.front();
 		mlstAxisChanges.pop_front();
 		mlstInputUpdates.remove(axis);
 
 		return axis;
-	}
+	}*/
 
 	bool cGamepadSDL::AxesUpdated()
 	{
@@ -317,7 +319,7 @@ namespace hpl {
 	}
 
 	//-----------------------------------------------------------------------
-
+	
 	eGamepadHatState cGamepadSDL::GetHatCurrentState(eGamepadHat aHat)
 	{
 		if(aHat >= 0 && aHat < GetNumHats())
@@ -346,7 +348,7 @@ namespace hpl {
 	}
 	
 	//-----------------------------------------------------------------------
-
+	
 	cVector2l cGamepadSDL::GetBallAbsPos(eGamepadBall aBall)
 	{
 		if(aBall >= 0 && aBall < GetNumBalls())

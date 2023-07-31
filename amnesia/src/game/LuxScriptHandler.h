@@ -25,7 +25,6 @@
 #include "LuxBase.h"
 
 //----------------------------------------------
-
 using namespace std;
 
 class cLuxScriptHandler : public iLuxUpdateable
@@ -335,7 +334,7 @@ private:
 	static void __stdcall SetLightFlickerActive(string& asLightName, bool abActive);
 
 
-
+	
 	// Entity properties
 	static void __stdcall SetEntityActive(string& asName, bool abActive);
 	static void __stdcall SetEntityVisible(string& asName, bool abVisible);
