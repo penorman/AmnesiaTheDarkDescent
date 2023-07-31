@@ -95,12 +95,12 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
       <ObjectFileName>$(ProjectDir)_temp\$(ProjectName)\Release\</ObjectFileName>
-      <ProgramDataBaseFileName>$(ProjectDir)..\lib\Release\vc70.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)..\lib\Release\vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalOptions>/Zc:externC- /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>Default</LanguageStandard>
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Lib>

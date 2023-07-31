@@ -268,8 +268,8 @@ void StringSplit_Generic(asIScriptGeneric *gen)
         // Add the part to the array
         CScriptString *part = new CScriptString();
         part->buffer.assign(&str->buffer[prev], pos-prev);
-        scriptArray->Resize(array->GetElementCount()+1);
-        *(CScriptString**)array->GetElementPointer(count) = part;
+        scriptArray->Resize(scriptArray->GetElementCount()+1);
+        *(CScriptString**)scriptArray->GetElementPointer(count) = part;
 
         // Find the next part
         count++;
@@ -279,8 +279,8 @@ void StringSplit_Generic(asIScriptGeneric *gen)
     // Add the remaining part
     CScriptString *part = new CScriptString();
     part->buffer.assign(&str->buffer[prev]);
-    scriptArray->Resize(array->GetElementCount()+1);
-    *(CScriptString**)array->GetElementPointer(count) = part;
+    scriptArray->Resize(scriptArray->GetElementCount()+1);
+    *(CScriptString**)scriptArray->GetElementPointer(count) = part;
 
     // Return the array by handle
     *(asIScriptArray**)gen->GetAddressOfReturnLocation() = scriptArray;

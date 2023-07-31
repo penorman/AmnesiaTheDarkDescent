@@ -94,7 +94,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <Optimization>Disabled</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>..\..\..\HPL2\core\include;..\..\..\HPL2\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;USE_GAMEPAD;USE_SDL2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -105,6 +105,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
       <CallingConvention>Cdecl</CallingConvention>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>OLDNAMES.LIB;libvcruntime.lib;ws2_32.lib;legacy_stdio_wide_specifiers.lib;legacy_stdio_definitions.lib;HPL2.lib;fltk.lib;wsock32.lib;comctl32.lib;zlibwapi.lib;libfbxsdk-mt.lib;SDL.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
