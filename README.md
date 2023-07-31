@@ -1,6 +1,6 @@
 # Amnesia: The Dark Descent
 
-This is a fork of the Amnesia the Dark Descent repository from FrictionalGames. 
+This is a fork of the Amnesia the Dark Descent repository from FrictionalGames and TiManGames, who kindly included the 2012 fbxsdk libs and build instructions.
 
 ## Index
 
@@ -12,9 +12,7 @@ This is a fork of the Amnesia the Dark Descent repository from FrictionalGames.
 - A copy of Amnesia: the Dark Descent (For playing the game, many files necessary for launching don't come with the source code)
 
 ### Windows:
-- Visual Studio C++ 2010 (for compiling the engine), express edition is fine: https://visualstudio.microsoft.com/vs/older-downloads/
-- VS 2010 Service pack 1 (the main game won't compile without this): https://www.microsoft.com/en-us/download/details.aspx?id=34677
-- You can also use a newer VS version for compiling as long as you have the 2010 one too
+- Visual Studio C++ 2019/2022 (for compiling the engine).
 
 ### Linux:
 - CMake, Make (for compiling)
@@ -22,12 +20,9 @@ This is a fork of the Amnesia the Dark Descent repository from FrictionalGames.
 ---
 
 ## Project Overview (Windows)
-The game is built from two separate solutions: The engine solution named `HPL2_2010` and the main game solution named `Lux`.
+The game is built from two separate solutions: The engine solution named `HPL2_0` and the main game solution named `Lux`.
 The project also includes all the different editors and additional tools, such as the Level Editor and the Model Editor.
-
-### Engine Overview
-
-### Game Overview
+The _HPL_2010 solution from the original project is kept as-is.
 
 ## Building & Playing (Windows)
 In order to build the game on Windows, you will first need to compile and build the HPL2 Engine.
@@ -35,22 +30,22 @@ In order to build the game on Windows, you will first need to compile and build 
 ### Building the Engine
 1. Clone the project
 2. Go to the `HPL2/` folder and extract `dependencies.zip`.
-3. Open `_HPL2_2010.sln` with Visual Studio 2010.
+3. Open `HPL2_0.sln` with Visual Studio 2019/2022.
 4. Set the build configuration from `Debug` to `Release`.
-5. `Build -> Build _HPL2_2010`. There won't be any errors, but some warning messages will appear.
-6. The build result will be created in `HPL2/lib`
+5. `Build -> Build Solution` or right click on the `HPL2_0` project and `Build`. There won't be any errors, but some warning messages will appear.
+6. The build result will be created in `HPL2/lib/Release`.
 
 ### Building the Game
 1. Go to `amnesia/src/game` and open `Lux.sln`.
-2. Click cancel on retag project message.
-3. Set the build configuration from `Debug` to `Release`.
-4. `Build -> Build Lux`.  There won't be any errors, but some warning messages will appear.
-5. The game executable should be created in `amnesia/redist`.
+2. Set the build configuration from `Debug` to `Release`.
+3. `Build -> Build Solution` or right click on the `Lux` project and `Build`.  There won't be any errors, but some warning messages will appear.
+4. The game executable should be created in `amnesia/redist`.
 
 ### Playing the Game
 Copy `Amnesia.exe` into your Amnesia game folder and launch it. The main menu should appear normally with no errors.
 
 ## Building & Playing (Linux)
+### Be aware, I have not tested the Linux build with `FBX SDK 2020.3.2` as of yet.
 
 There are a few extra steps required to be able to successfully build everything on Linux compared to Windows.
 
