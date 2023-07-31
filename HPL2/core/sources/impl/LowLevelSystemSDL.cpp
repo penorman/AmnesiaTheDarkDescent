@@ -453,8 +453,10 @@ namespace hpl {
 
 	//-----------------------------------------------------------------------
 
+	// TODO: add script is failing. maybe to do with angelscript being out of date.
 	bool cLowLevelSystemSDL::AddScriptFunc(const tString& asFuncDecl, void* pFunc)
 	{
+
 		if(mpScriptEngine->RegisterGlobalFunction(asFuncDecl.c_str(),asFUNCTION(pFunc),asCALL_STDCALL)<0)
 		{
 			Error("Couldn't add func '%s'\n",asFuncDecl.c_str());

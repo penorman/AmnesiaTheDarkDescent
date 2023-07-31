@@ -369,7 +369,7 @@ iPhysicsBody* cLuxScriptHandler::GetBodyInEntity(iLuxEntity* apEntity, const tSt
 #define END_SET_PROPERTY }
 
 //-----------------------------------------------------------------------
-
+// TODO: some script functions like Print dont get registered, but some like RandInt do.
 void cLuxScriptHandler::InitScriptFunctions()
 {
 	AddFunc("void Print(std::string &in asString)", (void *)Print);

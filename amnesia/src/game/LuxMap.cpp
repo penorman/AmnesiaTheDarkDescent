@@ -161,7 +161,7 @@ bool cLuxMap::LoadFromFile(const tString & asFile, bool abLoadEntities)
 			bScriptExists = true;
 		}
 	}
-	
+	// TODO: Critical - determine why this block fails
 	if(bScriptExists)
 	{
 		tString sCompileMessages = "";

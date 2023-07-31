@@ -371,8 +371,6 @@ namespace hpl {
 	}
 
 	//-----------------------------------------------------------------------
-	// TODO: - Change this implementation FROM KfCurve TO FbxAnimCurve syntax.
-	//		 - Figure out the layout of the data structure.
 	
 	static fbxsdk::FbxAnimCurve *GetCurve(FbxNode *apNode, FbxAnimLayer * apAnimLayer, tAnimTransformFlag aType, int alAxis)
 	{
@@ -1225,8 +1223,6 @@ namespace hpl {
 				
 					fbxsdk::FbxVector4 vTrans, vRot, vScale; 
 
-					// TODO: find out how to multiply FbxAMatrix by FbxMatrix, or cast between them.
-					//		 lClusterGeometry is being bad
 					fbxsdk::FbxAMatrix transformLinkMatrix, lClusterGeometry;
 					pLink->GetTransformLinkMatrix( transformLinkMatrix );
 

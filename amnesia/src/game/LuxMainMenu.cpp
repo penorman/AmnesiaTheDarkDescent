@@ -583,6 +583,7 @@ void cLuxMainMenu::AppGotInputFocus()
 	}
 }
 
+// TODO: Critical - reintroduce gamepad support
 //-----------------------------------------------------------------------
 //#ifdef USE_GAMEPAD
 //void cLuxMainMenu::AppDeviceWasPlugged()
