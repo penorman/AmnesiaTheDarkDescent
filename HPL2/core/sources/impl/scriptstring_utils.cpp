@@ -244,7 +244,6 @@ void StringFindLastNotOf0_Generic(asIScriptGeneric *gen)
 // AngelScript signature:
 // string@[]@ split(const string &in str, const string &in delim)
 
-// TODO: Research new angelscript ScriptArray replacement
 void StringSplit_Generic(asIScriptGeneric *gen)
 {
     // Obtain a pointer to the engine
