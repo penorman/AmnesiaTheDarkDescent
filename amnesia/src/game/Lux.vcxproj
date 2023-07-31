@@ -107,7 +107,7 @@
       <CallingConvention>Cdecl</CallingConvention>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>OLDNAMES.LIB;libvcruntime.lib;ws2_32.lib;legacy_stdio_wide_specifiers.lib;legacy_stdio_definitions.lib;HPL2.lib;fltk.lib;wsock32.lib;comctl32.lib;zlibwapi.lib;libfbxsdk-mt.lib;SDL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OLDNAMES.LIB;libvcruntime.lib;ws2_32.lib;legacy_stdio_wide_specifiers.lib;legacy_stdio_definitions.lib;HPL2.lib;fltk.lib;wsock32.lib;comctl32.lib;zlibwapi.lib;libfbxsdk-mt.lib;SDL.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\HPL2\lib\Release;..\..\..\HPL2\dependencies\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreEmbeddedIDL>false</IgnoreEmbeddedIDL>
       <GenerateDebugInformation>true</GenerateDebugInformation>

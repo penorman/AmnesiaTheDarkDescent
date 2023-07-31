@@ -243,6 +243,8 @@ void StringFindLastNotOf0_Generic(asIScriptGeneric *gen)
 //
 // AngelScript signature:
 // string@[]@ split(const string &in str, const string &in delim)
+
+// TODO: Research new angelscript ScriptArray replacement
 void StringSplit_Generic(asIScriptGeneric *gen)
 {
     // Obtain a pointer to the engine
@@ -253,7 +255,7 @@ void StringSplit_Generic(asIScriptGeneric *gen)
     int stringArrayType = engine->GetTypeIdByDecl("string@[]");
 
     // Create the array object
-    asIScriptArray *array = (asIScriptArray*)engine->CreateScriptObject(stringArrayType);
+    asIScriptArray *scriptArray = (asIScriptArray*)engine->CreateScriptObject(stringArrayType);
 
     // Get the arguments
     CScriptString *str = *(CScriptString**)gen->GetAddressOfArg(0);
@@ -266,7 +268,7 @@ void StringSplit_Generic(asIScriptGeneric *gen)
         // Add the part to the array
         CScriptString *part = new CScriptString();
         part->buffer.assign(&str->buffer[prev], pos-prev);
-        array->Resize(array->GetElementCount()+1);
+        scriptArray->Resize(array->GetElementCount()+1);
         *(CScriptString**)array->GetElementPointer(count) = part;
 
         // Find the next part
@@ -277,11 +279,11 @@ void StringSplit_Generic(asIScriptGeneric *gen)
     // Add the remaining part
     CScriptString *part = new CScriptString();
     part->buffer.assign(&str->buffer[prev]);
-    array->Resize(array->GetElementCount()+1);
+    scriptArray->Resize(array->GetElementCount()+1);
     *(CScriptString**)array->GetElementPointer(count) = part;
 
     // Return the array by handle
-    *(asIScriptArray**)gen->GetAddressOfReturnLocation() = array;
+    *(asIScriptArray**)gen->GetAddressOfReturnLocation() = scriptArray;
 }
 
 
