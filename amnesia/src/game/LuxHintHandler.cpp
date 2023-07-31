@@ -399,7 +399,7 @@ void cLuxHintHandler::ParseStringForGamepadIcons()
 		for(size_t i=0; i<vRows.size(); ++i)
 		{
 			///////////////
-			// Convert the std::string
+			// Convert the string
 			swprintf(sRowText, 1023, _W(" %ls"), vRows[i].c_str());
 
 			int lCount = 0;
@@ -416,7 +416,7 @@ void cLuxHintHandler::ParseStringForGamepadIcons()
 			}
 
 			//////////////////////////////////////////////////////
-			// Iterate the characters in std::string until NULL is found
+			// Iterate the characters in string until NULL is found
 			while(sRowText[lCount] != 0)
 			{
 				wchar_t lGlyphNum = ((wchar_t)sRowText[lCount]);
@@ -475,7 +475,7 @@ tWString cLuxHintHandler::AddGamepadIconAtPosition(const tWString& asCommand, in
 	std::copy(asCommand.begin(), asCommand.end(), sCommand.begin());
 
 	////////////////
-	// Get icon from command std::string
+	// Get icon from command string
 	tString sSep = ".";
 	tStringVec vInputParts;
 	cString::GetStringVec(sCommand, vInputParts, &sSep);

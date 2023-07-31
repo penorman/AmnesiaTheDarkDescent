@@ -370,7 +370,7 @@ cLuxBase::cLuxBase()
 
 
 	///////////////////////////////
-	// Init std::string
+	// Init string
 	msGameName = "";
 
 	msCurrentLanguage = "";

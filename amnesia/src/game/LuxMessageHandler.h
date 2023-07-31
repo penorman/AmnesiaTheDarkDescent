@@ -50,7 +50,7 @@ public:
 	void StartPauseMessage(const tWString& asText, bool abYesNo, iLuxMessageCallback *apCallback);
 	
 	/**
-	* if time is <=0 then the life time is calculated based on std::string length.
+	* if time is <=0 then the life time is calculated based on string length.
 	*/
 	void SetMessage(const tWString& asText, float afTime);
 	bool IsMessageActive(){ return mfMessageTime>0; }

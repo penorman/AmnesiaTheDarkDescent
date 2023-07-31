@@ -1047,7 +1047,7 @@ eLuxFocusIconStyle cLuxPlayer::StringToFocusIconStyle(const tString& asX)
 	else if(sLowCase=="simple")
 		return eLuxFocusIconStyle_Simple;
 	else
-		Log("Error converting std::string to FocusIconStyle : '%s'\n", asX.c_str());
+		Log("Error converting string to FocusIconStyle : '%s'\n", asX.c_str());
 
 	return eLuxFocusIconStyle_Default;
 }

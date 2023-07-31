@@ -83,7 +83,7 @@ void cLuxMainMenu_CustomStory::CreateGui()
 	cWidgetButton* pButton = mpGuiSet->CreateWidgetButton(0,cVector2f(fButtonWidth,30),_W(""), mpWindow);
 
 	//////////////////////////////////////////////////////////////
-	// Get longest label std::string and set button width accordingly
+	// Get longest label string and set button width accordingly
 	for(int i=0;i<(int)vLabels.size();++i)
 	{
 		const tWString& sLabel = vLabels[i];
